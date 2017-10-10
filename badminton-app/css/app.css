@@ -1,0 +1,12 @@
+body{
+    width: 75%;
+    margin: auto;
+    background-color: #e1e1e1;
+}
+
+.inline-display{
+    display: inline;
+}
+.fs-18{
+    font-size: 18px;
+}

@@ -1,0 +1,163 @@
+<div> 
+    <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Badminton champion League</a>
+    <ul class="nav navbar-nav fs-18">
+      <li><a ng-click="gotoHome()">Home</a></li>
+      <li><a ng-click="gotoPlayers()">Players</a></li>
+      <li><a ng-click="gotoAuction()">Auction</a></li>
+    </ul>
+  </div>
+</nav>
+</div>
+<div class="col-md-12" style="background-color: white;">
+<div class="col-md-6 col-sm-12">
+<br/><br/>
+    <div class="panel">
+        <div class="col-md-12">
+            <div class="inline-display">
+                <img alt="Team1" src="img/1.png">
+                <h1>BullDozers</h1>
+            </div>
+        </div>
+        <div class="col-md-12">
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+        </div>
+        <div class="col-md-12">
+            <h3>Budget Remaining</h3><br/>
+            <h4>Rs.40 L/1 Crore</h4>
+        </div>
+        <div class="col-md-6 " ng-repeat="player in bulldozer">
+            <div>
+                <img alt="user" src="img/1.png" />
+
+            </div>
+            <div>
+                <h3>{{player.name}}</h3>
+                <h5>({{player.price}})</h5>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<!--two teams-->
+
+<div class="col-md-6 col-sm-12" style="background-color: white;">
+    <br/><br/>
+<div class="panel">
+        <div class="col-md-12">
+            <div class="inline-display">
+                <img alt="Team1" src="img/1.png">
+                <h1>SmashDroppers</h1>
+            </div>
+        </div>
+        <div class="col-md-12">
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
+        </div>
+        <div class="col-md-12">
+            <h3>Budget Remaining</h3><br/>
+            <h4>Rs.40 L/1 Crore</h4>
+        </div>
+        <div class="col-md-6 " ng-repeat="player in smashDroppers">
+            <div>
+                <img alt="user" src="img/1.png" />
+
+            </div>
+              <div>
+                <h3>{{player.name}}</h3>
+                <h5>({{player.price}})</h5>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+<!--current bid-->
+
+<div class="col-md-12" style="background-color: white;">
+
+<div class="col-md-6">
+
+    <h1> Currently Bidding For.. </h1>
+    <div class="inline-display">
+        <img alt="image" src="img/1.png">
+        <h3> Rajath</h3>
+    </div>
+    <div>
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+        and scrambled it to make a type specimen book.
+    </div>
+    <br/>
+    <table class="table table-striped table-bordered col-md-4">
+        <thead>
+            <tr>
+                <th>Metric</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Rank</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Played</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Won</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>Lost</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Rating points</td>
+                <td>+37</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class="col-md-6">
+    <h1> Live Feed </h1>
+    <div class="inline-display">
+        <img alt="image" src="img/1.png" width="50">
+        <h3>Team Manasa bids Rs.25 Lakh for Rajath</h3>
+
+    </div>
+    <div class="inline-display">
+        <img alt="image" src="img/1.png" width="50">
+        <h3>Team Keshav bids Rs.22 Lakh for Rajath</h3>
+
+    </div>
+    <div class="inline-display">
+        <img alt="image" src="img/1.png" width="50">
+        <h3>Team Keshav bids Rs.22 Lakh for Rajath</h3>
+
+    </div>
+
+</div>
+<div class="col-md-12" style="background-color: white;">
+    <h2>Current Top Bid : Rs.35 Lakhs by Team Manasa</h2>
+</div>
+<br/>
+<br/>
+</div>
