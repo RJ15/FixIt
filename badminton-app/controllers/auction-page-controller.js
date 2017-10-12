@@ -1,37 +1,57 @@
-angular.module('badminton').controller('auctionPageController', function ($scope, $rootScope, $state, $uibModal,$stateParams) {
+angular.module('badminton').controller('auctionPageController', function ($scope, $rootScope, $state, $uibModal, $stateParams, $http, $game) {
     'use strict'
-   
+
+
+    $scope.liveFeed = {};
+    $scope.auctionFeed = {};
+    $scope.refresh = function () {
+
+        $game.getAuctionFeed().then(function (response) {
+            if (response.statusCode) {
+                $scope.liveFeed = response.body;
+                $scope.auctionFeed = $scope.liveFeed.auctionFeed;
+            }
+            else {
+                error("invalid response");
+            }
+        }, function (error) {
+            alert("error while getting auction feed");
+
+        })
+
+    }
+
 
     $scope.bulldozer = [
         {
-        "name": "Rajath",
-        "price": "35 Lakhs"
+            "name": "Rajath",
+            "price": "35 Lakhs"
         },
-         {
-        "name": "Ram",
-        "price": "35 Lakhs"
+        {
+            "name": "Ram",
+            "price": "35 Lakhs"
         },
-         {
-        "name": "Kuki",
-        "price": "35 Lakhs"
+        {
+            "name": "Kuki",
+            "price": "35 Lakhs"
         }
     ];
 
     $scope.smashDroppers = [
         {
-            "name":"Keshav",
-            "price":"35 lakhs"
+            "name": "Keshav",
+            "price": "35 lakhs"
 
         }
     ];
 
-    $scope.gotoHome = function(){
+    $scope.gotoHome = function () {
         $state.go("homePage");
     }
-    $scope.gotoPlayers = function(){
+    $scope.gotoPlayers = function () {
         $state.go("playersPage");
     }
-    $scope.gotoAuction = function(){
+    $scope.gotoAuction = function () {
         $state.go("auctionPage");
     }
 
