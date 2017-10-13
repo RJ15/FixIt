@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="inline-display">
                 <img alt="Team1" src="img/1.png">
-                <h1>BullDozers</h1>
+                <h1>{{teams[0].teamName}}</h1>
             </div>
         </div>
         <div class="col-md-12">
@@ -27,9 +27,9 @@
         </div>
         <div class="col-md-12">
             <h3>Budget Remaining</h3><br/>
-            <h4>Rs.40 L/1 Crore</h4>
+            <h4>Rs.{{teams[0].remainingBudget}} L/{{seasons.totalBudget}}</h4>
         </div>
-        <div class="col-md-6 " ng-repeat="player in bulldozer">
+        <div class="col-md-6 " ng-repeat="player in teams[0].players">
             <div>
                 <img alt="user" src="img/1.png" />
 
@@ -56,7 +56,7 @@
     <div class="col-md-12">
         <div class="inline-display">
             <img alt="Team1" src="img/1.png">
-            <h1>SmashDroppers</h1>
+            <h1>{{teams[1].teamName}}</h1>
         </div>
     </div>
     <div class="col-md-12">
@@ -65,9 +65,9 @@
     </div>
     <div class="col-md-12">
         <h3>Budget Remaining</h3><br/>
-        <h4>Rs.40 L/1 Crore</h4>
+        <h4>Rs.{{teams[1].remainingBudget}} L/{{seasons.totalBudget}} Crore</h4>
     </div>
-    <div class="col-md-6 " ng-repeat="player in smashDroppers">
+    <div class="col-md-6 " ng-repeat="player in teams[1].players">
         <div>
             <img alt="user" src="img/1.png" />
 
@@ -93,7 +93,7 @@
     <h1> Currently Bidding For.. </h1>
     <div class="inline-display">
         <img alt="image" src="img/1.png">
-        <h3> Rajath</h3>
+        <h3> {{remainingPlayers[0].name}}</h3>
     </div>
     <div>
         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
@@ -110,19 +110,19 @@
         <tbody>
             <tr>
                 <td>Rank</td>
-                <td>1</td>
+                <td>9</td>
             </tr>
             <tr>
                 <td>Played</td>
-                <td>10</td>
+                <td>{{remainingPlayers[0].played}}</td>
             </tr>
             <tr>
                 <td>Won</td>
-                <td>7</td>
+                <td>{{remainingPlayers[0].won}}</td>
             </tr>
             <tr>
                 <td>Lost</td>
-                <td>3</td>
+                <td>>{{remainingPlayers[0].lost}}</td>
             </tr>
             <tr>
                 <td>Rating points</td>

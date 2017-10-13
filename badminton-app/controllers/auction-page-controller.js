@@ -4,6 +4,9 @@ angular.module('badminton').controller('auctionPageController', function ($scope
 
     $scope.liveFeed = {};
     $scope.auctionFeed = {};
+    $scope.seasons = {};
+    $scope.teams = {};
+    $scope.remainingPlayers = {};
     $scope.refresh = function () {
 
         $game.getAuctionFeed().then(function (response) {
@@ -16,6 +19,20 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             }
         }, function (error) {
             alert("error while getting auction feed");
+
+        })
+
+        $game.getSeasonsTeamsPlayers().then(function (response) {
+            if (response.statusCode) {
+                $scope.seasons = response.body;
+                $scope.teams = $scope.seasons.teams;
+                $scope.remainingPlayers = $scope.seasons.remainingPlayers;
+            }
+            else {
+                error("invalid response");
+            }
+        }, function (error) {
+            alert("error while getting seasons teams players");
 
         })
 
