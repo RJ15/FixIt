@@ -1,4 +1,4 @@
-var badmintonApp = angular.module('badminton', ['ui.router', 'angularBootstrapMaterial', 'ui.bootstrap']);
+var badmintonApp = angular.module('badminton', ['ui.router', 'angularBootstrapMaterial', 'ui.bootstrap','angularSpinner']);
 
 badmintonApp.config(function ($stateProvider, $urlRouterProvider) {
 
