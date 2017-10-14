@@ -1,8 +1,8 @@
 <header></header>
-    <div class="col-md-12" style="background-color: white;">
+<div class="col-md-12" style="background-color: white;">
 <div class="col-md-6 col-sm-12">
     <br/><br/>
-    <div class="panel">
+    <div class="panel1">
         <div class="col-md-12">
             <div class="inline-display">
                 <img alt="Team1" src="img/1.png">
@@ -15,7 +15,13 @@
         </div>
         <div class="col-md-12">
             <h3>Budget Remaining</h3><br/>
-            <h4>Rs.{{teams[0].remainingBudget | number}} L/{{seasons.totalBudget | number}} Crore</h4>
+            <h4>&#8377; {{teams[0].remainingBudget | number}} L/ &#8377; {{seasons.totalBudget | number}} Crore</h4>
+            <div class="progress">
+            <div class="progress-bar team1" role="progressbar" aria-valuenow="progressValue1" aria-valuemin="0" 
+            aria-valuemax="100" >
+                 {{progressValue1}}%
+            </div>
+        </div>
         </div>
         <div class="col-md-6 " ng-repeat="player in teams[0].players">
             <div>
@@ -24,7 +30,7 @@
             </div>
             <div>
                 <h3>{{player.name}}</h3>
-                <h5>({{player.price | number}})</h5>
+                <h5>(&#8377;{{player.price | number}})</h5>
             </div>
         </div>
 
@@ -40,7 +46,7 @@
 
 <div class="col-md-6 col-sm-12" style="background-color: white;">
 <br/><br/>
-<div class="panel">
+<div class="panel1">
     <div class="col-md-12">
         <div class="inline-display">
             <img alt="Team1" src="img/1.png">
@@ -53,18 +59,26 @@
     </div>
     <div class="col-md-12">
         <h3>Budget Remaining</h3><br/>
-        <h4>Rs.{{teams[1].remainingBudget | number}} L/{{seasons.totalBudget | number}} Crore</h4>
-    </div>
-    <div class="col-md-6 " ng-repeat="player in teams[1].players">
-        <div>
-            <img alt="user" src="img/1.png" />
 
-        </div>
-        <div>
-            <h3>{{player.name}}</h3>
-            <h5>({{player.price | number}})</h5>
+
+        <h4>&#8377;{{teams[1].remainingBudget | number}} L/ &#8377; {{seasons.totalBudget | number}} Crore</h4>
+        <div class="progress">
+            <div class="progress-bar team2" role="progressbar" aria-valuenow="progressValue2" aria-valuemin="0" 
+            aria-valuemax="100" >
+                 {{progressValue2}}%
+            </div>
         </div>
     </div>
+<div class="col-md-6 " ng-repeat="player in teams[1].players">
+    <div>
+        <img alt="user" src="img/1.png" />
+
+    </div>
+    <div>
+        <h3>{{player.name}}</h3>
+        <h5>(&#8377; {{player.price | number}})</h5>
+    </div>
+</div>
 
 </div>
 
@@ -110,7 +124,7 @@
             </tr>
             <tr>
                 <td>Lost</td>
-                <td>>{{remainingPlayers[0].lost}}</td>
+                <td>{{remainingPlayers[0].lost}}</td>
             </tr>
             <tr>
                 <td>Rating points</td>
@@ -124,19 +138,19 @@
 
 
 <div class="col-md-6">
-    <div>
-        <h1 class="inline-display"> Live Feed </h1>
-        <button class="btn btn-primary" style="position: absolute;margin-left: 65px;" ng-click="refresh()">Refresh</button>
-    </div>
-    <div class="inline-display" ng-repeat="feed in auctionFeed | limitTo: 3">
-        <img alt="image" src="img/1.png" width="50">
-        <h3>{{feed.teamName}} {{feed.bidType}} &#8377; {{feed.price | number}} for {{feed.playerName}}</h3>
+    <div style="margin-top: 20px;margin-bottom: 10px;">
+<h1 class="inline-display"> Live Feed </h1>
+<button class="btn btn-primary" style="position: absolute;margin-left: 65px;" ng-click="refresh()">Refresh</button>
+</div>
+<div class="inline-display" ng-repeat="feed in auctionFeed | limitTo: 3">
+    <img alt="image" src="img/1.png" width="50">
+    <h3>{{feed.teamName}} {{feed.bidType}} &#8377; {{feed.price | number}} for {{feed.playerName}}</h3>
 
-    </div>
+</div>
 
 </div>
 <div class="col-md-12" style="background-color: white;">
-<h2>Current Top Bid : Rs.35 Lakhs by Team Manasa</h2>
+<h2>Current Top Bid : &#8377;35 Lakhs by Team Manasa</h2>
 </div>
 <br/>
 <br/>

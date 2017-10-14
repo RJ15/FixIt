@@ -7,6 +7,8 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     $scope.seasons = {};
     $scope.teams = {};
     $scope.remainingPlayers = {};
+    $scope.progressValue1 = "100%";
+    $scope.progressValue1 = "100%";
     $scope.refresh = function () {
 
         $game.getAuctionFeed().then(function (response) {
@@ -27,6 +29,11 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             if (response.statusCode) {
                 $scope.seasons = response.body;
                 $scope.teams = $scope.seasons.teams;
+                
+                $scope.progressValue1 = ($scope.teams[0].remainingBudget / $scope.seasons.totalBudget) * 100;
+                document.getElementsByClassName("team1")[0].style.width = $scope.progressValue1 + "%";
+                $scope.progressValue2 = ($scope.teams[1].remainingBudget / $scope.seasons.totalBudget) * 100;
+                document.getElementsByClassName("team2")[0].style.width = $scope.progressValue2+ "%";
                 $scope.remainingPlayers = $scope.seasons.remainingPlayers;
             }
             else {
