@@ -13,6 +13,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             if (response.statusCode) {
                 $scope.liveFeed = response.body;
                 $scope.auctionFeed = $scope.liveFeed.auctionFeed;
+                $scope.auctionFeed.reverse();
             }
             else {
                 error("invalid response");
