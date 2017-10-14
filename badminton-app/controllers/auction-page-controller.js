@@ -39,8 +39,10 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     }
     $scope.$on('$viewContentLoaded', function () {
         $scope.refresh();
-        if ($rootScope.userData.isOwner && $rootScope.userData.playerId != "manasa-n") {
-            $scope.isBulldozerOwner = false;
+        if ($rootScope.userData != undefined){
+            if ($rootScope.userData.isOwner && $rootScope.userData.playerId != "manasa-n") {
+                $scope.isBulldozerOwner = false;
+            }     
         }
     });
 
