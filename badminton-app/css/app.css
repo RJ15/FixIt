@@ -1,4 +1,4 @@
-body{
+body {
     width: 75%;
     margin: auto;
     background-color: #e1e1e1;
@@ -8,29 +8,33 @@ body{
         width: 100%;
         overflow-x: hidden;
     }
-    .navbar{
+    .navbar {
         padding-left: 20px;
     }
-    .col-sm-12{
-        padding:10px;
+    .col-sm-12 {
+        padding: 10px;
     }
-    .col-sm-8{
-      padding-left: 0;
+    .col-sm-8 {
+        padding-left: 0;
     }
-    .change-height{
+    .change-height {
         height: 125%;
     }
-
+    .team-image {
+        width: 200px;
+        height: 100px;
+    }
 }
 
-.inline-display{
+.inline-display {
     display: inline;
 }
-.fs-18{
+
+.fs-18 {
     font-size: 18px;
 }
 
-.panel1{
+.panel1 {
     margin-bottom: 20px;
     background-color: #fff;
     border-radius: 4px;
@@ -38,18 +42,21 @@ body{
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 
-.team-image{
+.team-image {
     width: 400px;
     height: 200px;
 }
 
-
-
 @media only screen and (min-width: 600px) {
-    
+    .change-height {
+        height: 100%;
+    }
+}
 
-        .change-height{
-            height:100%;
-        }   
-
+.login {
+    background: rgb(225, 225, 225);
+    display: block;
+    width: 35%;
+    margin: auto;
+    padding: 5%;
 }

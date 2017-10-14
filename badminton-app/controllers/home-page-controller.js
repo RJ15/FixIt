@@ -1,4 +1,4 @@
-angular.module('badminton').controller('homePageController', function ($scope, $rootScope, $state, $uibModal,$stateParams) {
+angular.module('badminton').controller('homePageController', function ($scope, $rootScope, $state, $uibModal,$stateParams,usSpinnerService) {
     'use strict'
    
 

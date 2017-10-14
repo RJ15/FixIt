@@ -3,6 +3,12 @@ var badmintonApp = angular.module('badminton', ['ui.router', 'angularBootstrapMa
 badmintonApp.config(function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
+        .state('loginPage',{
+                url: '/login-page',
+                templateUrl: 'views/login.html',
+                controller: 'loginController'
+            })
+
         .state('auctionPage', {
             url: '/auction-page',
             templateUrl: 'views/auction-page.html',
@@ -22,8 +28,7 @@ badmintonApp.config(function ($stateProvider, $urlRouterProvider) {
 
         })
         
-
-    $urlRouterProvider.otherwise('/home-page');
+    $urlRouterProvider.otherwise('/login-page');
 })
 
 

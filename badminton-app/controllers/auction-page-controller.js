@@ -16,7 +16,10 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     $scope.stopSpin = function () {
         usSpinnerService.stop('spinner-1');
     }
-
+    $scope.$on('$viewContentLoaded', function()
+    {
+        $scope.refresh();
+    });
     $scope.refresh = function () {
 
         $game.getAuctionFeed().then(function (response) {
