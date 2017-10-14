@@ -91,6 +91,32 @@
 
 
 </div>
+<!--bid board-->
+<div class="col-md-12 col-sm-12" style="background-color: currentColor;" >
+    <h2 style="color:floralwhite;margin-left: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid;"> Bid board </h2>
+    <div class="col-md-4 col-sm-6">
+        <h2 style="color:cadetblue">BullDozers</h2>
+        <button class="btn btn-primary" ng-if="userData.isOwner" style="margin-top: 40px;margin-left: 70px;" 
+        ng-click="bidByBulldozers()" ng-disabled="!isBulldozerOwner">BullDozers Bid</button>
+         <h4 style="color:cadetblue;margin-top: 25px;margin-left: 70px;" >BID Slab : {{slabValue | number}}</h4>
+    </div>
+    <div class="col-md-4 col-sm-6">
+        <h2 style="color:cadetblue">{{remainingPlayers[0].name}}</h2>
+        <img alt="image" src="img/1.png">
+        <h4 style="color:cadetblue;margin-top:25px;margin-bottom:25px;">Current BID: {{bidPrice | number}}</h4>
+        <h3 ng-if="message" style="color:cadetblue;">"You have exceeded the bidding range. So start from beginning!!!"</h3>
+    </div>
+    <div class="col-md-4 col-sm-6">
+        <h2 style="color:cadetblue">SmashDroppers</h2>
+        <button class="btn btn-primary" style="margin-top: 40px;
+    margin-right: 70px;" ng-if="userData.isOwner" ng-disabled="isBulldozerOwner" ng-click="bidBySmashDroppers()">SmashDroppers Bid</button>
+    <h4 style="color:cadetblue;margin-top:25px;">BID Slab :{{slabValue | number}}</h4>
+  
+    
+    </div>
+</div>
 <!--current bid-->
 
 <div class="col-md-12" style="background-color: white;">
