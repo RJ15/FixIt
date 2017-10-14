@@ -3,6 +3,25 @@ body{
     margin: auto;
     background-color: #e1e1e1;
 }
+@media only screen and (max-width: 500px) {
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+    .navbar{
+        padding-left: 20px;
+    }
+    .col-sm-12{
+        padding:10px;
+    }
+    .col-sm-8{
+      padding-left: 0;
+    }
+    .change-height{
+        height: 125%;
+    }
+
+}
 
 .inline-display{
     display: inline;
@@ -17,4 +36,15 @@ body{
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+
+
+@media only screen and (min-width: 600px) {
+    
+
+        .change-height{
+            height:100%;
+        }   
+
 }
