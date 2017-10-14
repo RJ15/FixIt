@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-12">
             <h3>Budget Remaining</h3><br/>
-            <h4>Rs.{{teams[0].remainingBudget}} L/{{seasons.totalBudget}}</h4>
+            <h4>Rs.{{teams[0].remainingBudget | number}} L/{{seasons.totalBudget | number}} Crore</h4>
         </div>
         <div class="col-md-6 " ng-repeat="player in teams[0].players">
             <div>
@@ -24,7 +24,7 @@
             </div>
             <div>
                 <h3>{{player.name}}</h3>
-                <h5>({{player.price}})</h5>
+                <h5>({{player.price | number}})</h5>
             </div>
         </div>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="col-md-12">
         <h3>Budget Remaining</h3><br/>
-        <h4>Rs.{{teams[1].remainingBudget}} L/{{seasons.totalBudget}} Crore</h4>
+        <h4>Rs.{{teams[1].remainingBudget | number}} L/{{seasons.totalBudget | number}} Crore</h4>
     </div>
     <div class="col-md-6 " ng-repeat="player in teams[1].players">
         <div>
@@ -62,7 +62,7 @@
         </div>
         <div>
             <h3>{{player.name}}</h3>
-            <h5>({{player.price}})</h5>
+            <h5>({{player.price | number}})</h5>
         </div>
     </div>
 
@@ -130,7 +130,7 @@
     </div>
     <div class="inline-display" ng-repeat="feed in auctionFeed | limitTo: 3">
         <img alt="image" src="img/1.png" width="50">
-        <h3>{{feed.teamName}} {{feed.bidType}} &#8377; {{feed.price}} for {{feed.playerName}}</h3>
+        <h3>{{feed.teamName}} {{feed.bidType}} &#8377; {{feed.price | number}} for {{feed.playerName}}</h3>
 
     </div>
 
