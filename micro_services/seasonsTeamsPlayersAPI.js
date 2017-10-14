@@ -2,7 +2,7 @@
 
 console.log('Loading function');
 
-var mysql      = require('mysql');
+var mysql = require('mysql');
 
 exports.handler = (event, context, callback) => {
     var connection = mysql.createConnection({
