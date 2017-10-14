@@ -38,6 +38,11 @@ body{
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 
+.team-image{
+    width: 400px;
+    height: 200px;
+}
+
 
 
 @media only screen and (min-width: 600px) {

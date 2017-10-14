@@ -8,7 +8,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     $scope.teams = {};
     $scope.remainingPlayers = {};
     $scope.progressValue1 = "100%";
-    $scope.progressValue1 = "100%";
+    $scope.progressValue2 = "100%";
 
     $scope.startSpin = function () {
         usSpinnerService.spin('spinner-1');
@@ -64,30 +64,6 @@ angular.module('badminton').controller('auctionPageController', function ($scope
         })
 
     }
-
-
-    $scope.bulldozer = [
-        {
-            "name": "Rajath",
-            "price": "35 Lakhs"
-        },
-        {
-            "name": "Ram",
-            "price": "35 Lakhs"
-        },
-        {
-            "name": "Kuki",
-            "price": "35 Lakhs"
-        }
-    ];
-
-    $scope.smashDroppers = [
-        {
-            "name": "Keshav",
-            "price": "35 lakhs"
-
-        }
-    ];
 
     $scope.gotoHome = function () {
         $state.go("homePage");
