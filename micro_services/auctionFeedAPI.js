@@ -25,7 +25,7 @@ exports.handler = (event, context, callback) => {
             return;
         } else {
             console.log('MySQL Connection obtained');
-            var sqlQuery = "SELECT sea.id as seasonId, sea.name as seasonName, feed.id as auctionFeedId, team.id as teamId, team.name as teamName, bid.description as bidType, player.id as playerId, player.name as playerName, player.profile_picture as profilePic, feed.bid_value as price, feed.timestamp as timestamp  FROM auction_feed AS feed JOIN seasons AS sea ON feed.season_id = sea.id JOIN  teams AS team ON feed.team_id = team.id JOIN players AS player ON feed.player_id = player.id JOIN bid_type AS bid ON feed.bid_type = bid.id"
+            var sqlQuery = "SELECT sea.id as seasonId, sea.name as seasonName, feed.id as auctionFeedId, team.id as teamId, team.name as teamName, bid.description as bidType, player.id as playerId, player.name as playerName, player.profile_picture as profilePic, feed.bid_value as price, feed.timestamp as timestamp  FROM auction_feed AS feed JOIN seasons AS sea ON feed.season_id = sea.id JOIN  teams AS team ON feed.team_id = team.id JOIN players AS player ON feed.player_id = player.id JOIN bid_type AS bid ON feed.bid_type = bid.id GROUP BY feed.id"
             connection.query(sqlQuery, function(err, rows) {
                 var auctionFeed = {};
                 auctionFeed.seasonId = rows[0].seasonId;

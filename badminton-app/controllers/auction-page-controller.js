@@ -169,6 +169,15 @@ angular.module('badminton').controller('auctionPageController', function ($scope
                 $scope.progressValue2 = ($scope.teams[1].remainingBudget / $scope.seasons.totalBudget) * 100;
                 document.getElementsByClassName("team2")[0].style.width = $scope.progressValue2 + "%";
                 $scope.remainingPlayers = $scope.seasons.remainingPlayers;
+                if ($scope.remainingPlayers) {
+                    for (var i = 0; i < $scope.remainingPlayers.length; i++) {
+                        var remainingPlayer = $scope.remainingPlayers[i];
+                        if(remainingPlayer.profile_picture == null) {
+                            remainingPlayer.profile_picture = "img/1.png"
+                        } 
+                        $scope.remainingPlayers[i] = remainingPlayer;
+                    }
+                }
                 $scope.stopSpin();
 
             }

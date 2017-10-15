@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-6 " ng-repeat="player in teams[0].players">
             <div>
-                <img class="player-image" alt="user" src="{{player.profilePic}}" />
+                <img class="player-image" alt="user" ng-src="{{player.profilePic}}" />
 
             </div>
             <div>
@@ -76,7 +76,7 @@
     </div>
 <div class="col-md-6 " ng-repeat="player in teams[1].players">
     <div>
-        <img class="player-image" alt="user" src="{{player.profilePic}}" />
+        <img class="player-image" alt="user" ng-src="{{player.profilePic}}" />
 
     </div>
     <div>
@@ -104,7 +104,7 @@
     </div>
     <div class="col-md-4 col-sm-6">
         <h2 style="color:cadetblue">{{remainingPlayers[0].name}}</h2>
-        <img alt="image" src="img/1.png">
+        <img class="player-image" alt="image" ng-src="{{remainingPlayers[0].profile_picture}}">
         <h4 style="color:cadetblue;margin-top:25px;margin-bottom:25px;">Current BID: &#8377;{{bidPrice | number}}</h4>
         <h3 ng-if="message" style="color:cadetblue;">"You have exceeded the bidding range. So start from beginning!!!"</h3>
     </div>
@@ -125,7 +125,7 @@
 
     <h1> Currently Bidding For.. </h1>
     <div class="inline-display">
-        <img alt="image" src="img/1.png">
+        <img class="player-image" alt="image" ng-src="{{remainingPlayers[0].profile_picture}}">
         <h3> {{remainingPlayers[0].name}}</h3>
     </div>
     <div>
@@ -141,10 +141,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <!-- <tr>
                 <td>Rank</td>
                 <td>9</td>
-            </tr>
+            </tr> -->
             <tr>
                 <td>Played</td>
                 <td>{{remainingPlayers[0].played}}</td>
@@ -157,10 +157,10 @@
                 <td>Lost</td>
                 <td>{{remainingPlayers[0].lost}}</td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td>Rating points</td>
                 <td>+37</td>
-            </tr>
+            </tr> -->
 
         </tbody>
     </table>
@@ -174,7 +174,7 @@
 <i class="fa fa-refresh fa-2x" style="cursor: pointer;" ng-click="refresh()"></i>
 </div>
 <div class="inline-display" ng-repeat="feed in auctionFeed | limitTo: 3">
-    <img  class="live-player-image" alt="image" src="{{feed.profilePic}}" width="50">
+    <img  class="live-player-image" alt="image" ng-src="{{feed.profilePic}}" width="50">
     <h3>{{feed.teamName}} {{feed.bidType}} &#8377; {{feed.price | number}} for {{feed.playerName}}</h3>
 
 </div>
