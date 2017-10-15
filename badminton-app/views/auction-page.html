@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-6 " ng-repeat="player in teams[0].players">
             <div>
-                <img alt="user" src="img/1.png" />
+                <img class="player-image" alt="user" src="{{player.profilePic}}" />
 
             </div>
             <div>
@@ -76,7 +76,7 @@
     </div>
 <div class="col-md-6 " ng-repeat="player in teams[1].players">
     <div>
-        <img alt="user" src="img/1.png" />
+        <img class="player-image" alt="user" src="{{player.profilePic}}" />
 
     </div>
     <div>
@@ -174,7 +174,7 @@
 <i class="fa fa-refresh fa-2x" style="cursor: pointer;" ng-click="refresh()"></i>
 </div>
 <div class="inline-display" ng-repeat="feed in auctionFeed | limitTo: 3">
-    <img alt="image" src="img/1.png" width="50">
+    <img  class="live-player-image" alt="image" src="{{feed.profilePic}}" width="50">
     <h3>{{feed.teamName}} {{feed.bidType}} &#8377; {{feed.price | number}} for {{feed.playerName}}</h3>
 
 </div>

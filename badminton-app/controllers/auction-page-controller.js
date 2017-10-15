@@ -123,7 +123,16 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             if (response.statusCode) {
                 $scope.liveFeed = response.body;
                 $scope.auctionFeed = $scope.liveFeed.auctionFeed;
-                $scope.auctionFeed.reverse();
+                if ($scope.auctionFeed) {
+                    for (var i = 0; i < $scope.auctionFeed.length; i++) {
+                        var feed = $scope.auctionFeed[i];
+                        if(feed.profilePic == null) {
+                            feed.profilePic = "img/1.png"
+                        } 
+                        $scope.auctionFeed[i] = feed;
+                    }
+                    $scope.auctionFeed.reverse();
+                }
                 $scope.stopSpin();
             }
             else {
@@ -142,7 +151,19 @@ angular.module('badminton').controller('auctionPageController', function ($scope
 
                 $scope.seasons = response.body;
                 $scope.teams = $scope.seasons.teams;
-
+                if ($scope.teams) {
+                    for (var i = 0; i < $scope.teams.length; i++) {
+                        var teams = $scope.teams[i];
+                        for (var j = 0; j < teams.players.length; j++) {
+                            var player = teams.players[j];
+                            if(player.profilePic == null) {
+                                player.profilePic = "img/1.png"
+                            } 
+                            teams.players[j] = player;
+                        }
+                        $scope.teams[i] = teams;
+                    }
+                }
                 $scope.progressValue1 = ($scope.teams[0].remainingBudget / $scope.seasons.totalBudget) * 100;
                 document.getElementsByClassName("team1")[0].style.width = $scope.progressValue1 + "%";
                 $scope.progressValue2 = ($scope.teams[1].remainingBudget / $scope.seasons.totalBudget) * 100;
