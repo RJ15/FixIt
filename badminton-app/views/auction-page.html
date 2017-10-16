@@ -64,13 +64,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 " ng-repeat="player in teams[1].players" style="margin-bottom: 10px;">
+            <div class="col-md-6 " ng-repeat="player in teams[1].players" style="margin-bottom: 30px;">
                     <div>
                         <img class="player-image" alt="user" ng-src="{{player.profilePic}}" />
                     </div>
                     <div class="textAlign">
                         <h3>{{player.name}}</h3>
-                        <h5>(&#8377; {{player.price | number}})</h5>
+                        <h5 ng-if="player.price">(&#8377; {{player.price | number}})</h5>
                     </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
 </div>
 <!--bid board-->
 
-<div class="col-md-12 col-sm-12" style="background-color: white;padding-top:10px;padding-bottom: 10px;" >
+<div class="col-md-12 col-sm-12" style="background-color: white;padding-top:10px;padding-bottom: 10px;" ng-if="remainingPlayers.length > 0">
     <h2 style="margin-left: 15px;padding-bottom: 10px;border-bottom: 1px solid;"> Bid board </h2>
     <div class="col-md-3 col-sm-6">
         <h2>BullDozers</h2>
@@ -132,9 +132,12 @@
         <button class="btn btn-primary" style="width: 100%;"  ng-click="bidBySmashDroppers()">SmashDroppers Bid</button>
     </div>
 </div>
+<div class="col-md-12 textAlign" ng-if="remainingPlayers.length == 0" style="background-color: white">
+   <h2>No Players available for bidding!!!<h2>
+</div>
 <!--current bid-->
 
-<div class="col-md-12" style="background-color: white;">
+<div class="col-md-12" style="background-color: white;" ng-if="auctionFeed.length > 0">
     <div class="col-md-12" style="border-top: 1px solid;">
         <div style="margin-top: 20px;margin-bottom: 10px;">
             <h1 class="inline-display">Live Feed </h1>

@@ -1,4 +1,4 @@
-angular.module('badminton').controller('auctionPageController', function ($scope, $timeout, $rootScope, $state, $uibModal, $stateParams, $http, $game, usSpinnerService) {
+angular.module('badminton').controller('auctionPageController', function ($scope, $timeout, $rootScope, $state, $uibModal, $stateParams, $http, $game, usSpinnerService,$bidding) {
     'use strict'
 
 
@@ -13,6 +13,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     $scope.slabValue = 100000;
     $scope.message = false;
     $scope.isBulldozerOwner = true;
+    $scope.bidBy = "";
     // $scope.counter = 30;
     // var stopped;
 
@@ -65,33 +66,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
 
 
     $scope.bidBySmashDroppers = function () {
-        // $scope.countdown();
-        // $bidding.bidByBulldozers.then(function (response) {
-        //     var payload = {
-        //         "seasonId": $scope.seasons.seasonId,
-        //         "teamId":$scope.teams[0],
-        //         "playerId":"",
-        //         "bidType":"",
-        //         "bidValue": "",
-        //         "timestamp":""
-
-        //     }
-            
-    
-
-        //     $scope.startSpin();
-        //     if (response.statusCode) {
-        //         $scope.refresh();
-        //     }
-        //     else {
-        //         error("invalid response");
-        //         $scope.stopSpin();
-        //     }
-        // }, function (error) {
-        //     alert("error while posting bid");
-        //     $scope.stopSpin();
-
-        // })
+        
         $scope.slabValue = $scope.getBidSlabValue($scope.bidPrice);
         $scope.bidPrice = $scope.bidPrice + $scope.slabValue;
         if ($scope.bidPrice != 10100000) {
@@ -101,6 +76,63 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             $scope.message = true;
             $scope.bidPrice = 100000;
         }
+        $scope.bidBy =  $scope.teams[1].teamId;
+        // $scope.countdown();
+        var payload = {
+                "seasonId": $scope.seasons.seasonId,
+                "teamId":$scope.teams[1].teamId,
+                "playerId": $scope.remainingPlayers[0].id,
+                "bidType": "BID",
+                "bidValue": $scope.bidPrice
+
+            }
+        $bidding.bidByTeam(payload).then(function (response) {
+            
+            $scope.startSpin();
+            if (response.statusCode) {
+                alert("bid success");
+                $scope.stopSpin();
+            }
+            else {
+                error("invalid bid");
+                $scope.stopSpin();
+            }
+        }, function (error) {
+            alert("error while bidding");
+            $scope.stopSpin();
+
+        })
+
+    }
+    $scope.wonBid = function (){
+        var payload = {
+                "seasonId": $scope.seasons.seasonId,
+                "teamId":$scope.bidBy,
+                "playerId": $scope.remainingPlayers[0].id,
+                "bidType": "WINNING-BID",
+                "bidValue": $scope.bidPrice
+
+        }
+        $bidding.wonByTeam(payload).then(function (response) {
+            
+            $scope.startSpin();
+            if (response) {
+                alert("bid won");
+                $scope.stopSpin();
+                $scope.refresh();
+            }
+
+            else {
+                error("invalid bid");
+                $scope.stopSpin();
+            }
+        }, function (error) {
+            alert("error while winning bid");
+            $scope.stopSpin();
+
+        })
+
+
     }
     $scope.bidByBulldozers = function () {
         // $scope.countdown();
@@ -112,8 +144,35 @@ angular.module('badminton').controller('auctionPageController', function ($scope
         if ($scope.bidPrice == 10100000) {
             $scope.message = true;
             $scope.bidPrice = 100000;
+
         }
         
+        $scope.bidBy =  $scope.teams[0].teamId;
+        var payload = {
+                "seasonId": $scope.seasons.seasonId,
+                "teamId":$scope.teams[0].teamId,
+                "playerId": $scope.remainingPlayers[0].id,
+                "bidType": "BID",
+                "bidValue": $scope.bidPrice
+
+        }
+        $bidding.bidByTeam(payload).then(function (response) {
+            
+            $scope.startSpin();
+            if (response.statusCode) {
+                alert("bid success");
+                $scope.stopSpin();
+            }
+            else {
+                error("invalid bid");
+                $scope.stopSpin();
+            }
+        }, function (error) {
+            alert("error while bidding");
+            $scope.stopSpin();
+
+        })
+
 
     }
     $scope.getBidSlabValue = function (price) {
@@ -122,10 +181,10 @@ angular.module('badminton').controller('auctionPageController', function ($scope
         }
         if (price < 1000000) {
             return 100000;
-        } else if (price >= 1000000 && price < 5000000) {
+        } else if (price >= 1000000 && price < 8000000) {
             return 500000;
 
-        } else if (price >= 5000000) {
+        } else if (price >= 8000000) {
             return 1000000;
         }
     }
