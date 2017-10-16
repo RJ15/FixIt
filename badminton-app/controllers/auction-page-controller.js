@@ -37,6 +37,20 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     $scope.stopSpin = function () {
         usSpinnerService.stop('spinner-1');
     }
+    $scope.getColor = function (budgetLeft) {
+        if (budgetLeft <= 25 || budgetLeft <= 25) {
+            return "redColor";
+        } 
+        if (budgetLeft > 25 && budgetLeft <= 50) {
+            return "orangeColor";
+        }
+        if (budgetLeft > 50 && budgetLeft <= 75) {
+            return "cyanColor";
+        }  
+        if (budgetLeft > 75 && budgetLeft <= 100) {
+            return "greenColor";
+        }
+    }
     $scope.$on('$viewContentLoaded', function () {
         $scope.refresh();
         if ($rootScope.userData != undefined){
@@ -148,7 +162,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
         $game.getSeasonsTeamsPlayers().then(function (response) {
             $scope.startSpin();
             if (response.statusCode) {
-
+               
                 $scope.seasons = response.body;
                 $scope.teams = $scope.seasons.teams;
                 if ($scope.teams) {
@@ -164,9 +178,9 @@ angular.module('badminton').controller('auctionPageController', function ($scope
                         $scope.teams[i] = teams;
                     }
                 }
-                $scope.progressValue1 = (($scope.seasons.totalBudget - $scope.teams[0].remainingBudget) / $scope.seasons.totalBudget) * 100;
+                $scope.progressValue1 = ($scope.teams[0].remainingBudget / $scope.seasons.totalBudget) * 100;
                 document.getElementsByClassName("team1")[0].style.width = $scope.progressValue1 + "%";
-                $scope.progressValue2 = (($scope.seasons.totalBudget - $scope.teams[1].remainingBudget) / $scope.seasons.totalBudget) * 100;
+                $scope.progressValue2 = ($scope.teams[1].remainingBudget / $scope.seasons.totalBudget) * 100;
                 document.getElementsByClassName("team2")[0].style.width = $scope.progressValue2 + "%";
                 $scope.remainingPlayers = $scope.seasons.remainingPlayers;
                 if ($scope.remainingPlayers) {

@@ -57,11 +57,33 @@ body {
     .player-image {
         width: 200px;
         height: 200px;
+        border-radius: 50%;
+    }
+
+    .redColor {
+        background-color: #E01111;
+    }
+
+    .cyanColor {
+        background-color: #03CCEC;
+    }
+
+    .orangeColor {
+        background-color: #F6BC16;
+    }
+
+    .greenColor {
+        background-color: #12D818;
+    }
+
+    .textAlign {
+        text-align: center;
     }
 
     .live-player-image {
         width: 50px;
         height: 50px;
+        border-radius: 50%;
     }
 
     .login {
