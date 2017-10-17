@@ -91,6 +91,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             $scope.startSpin();
             if (response.statusCode) {
                 $scope.stopSpin();
+                $scope.refresh();
             }
             else {
                 error("invalid bid");
@@ -119,6 +120,9 @@ angular.module('badminton').controller('auctionPageController', function ($scope
                 alert("bid won");
                 $scope.stopSpin();
                 $scope.refresh();
+                $scope.bidPrice = 100000;
+                $scope.slabValue = 100000;
+
             }
 
             else {
@@ -159,6 +163,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             
             $scope.startSpin();
             if (response.statusCode) {
+                $scope.refresh();
                 $scope.stopSpin();
             }
             else {
