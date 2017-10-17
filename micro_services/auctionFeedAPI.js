@@ -6,10 +6,10 @@ var mysql = require('mysql');
 
 exports.handler = (event, context, callback) => {
     var connection = mysql.createConnection({
-        host     : 'fixit.cvcj08bqo4xy.ap-south-1.rds.amazonaws.com',
-        user     : 'root',
-        password : 'FixitBuddy2017',
-        database    : 'fixit'
+        host     : '',
+        user     : '',
+        password : '',
+        database : ''
     });
     
     var response = {
