@@ -184,11 +184,11 @@ angular.module('badminton').controller('auctionPageController', function ($scope
         }
         if (price < 1000000) {
             return 100000;
-        } else if (price >= 1000000 && price < 8000000) {
-            return 500000;
+        } else if (price >= 1000000 && price < 5000000) {
+            return 200000;
 
-        } else if (price >= 8000000) {
-            return 1000000;
+        } else if (price >= 5000000) {
+            return 500000;
         }
     }
     $scope.refresh = function () {

@@ -79,14 +79,14 @@
 <!--bid board-->
 
 <div class="col-md-12 col-sm-12" style="background-color: white;padding-top:10px;padding-bottom: 10px;" ng-if="remainingPlayers.length > 0">
-    <h2 style="margin-left: 15px;padding-bottom: 10px;border-bottom: 1px solid;"> Bid board </h2>
+    <h2 style="margin-left: 15px;padding-bottom: 10px;border-bottom: 2px solid #ecebeb;"> Bid board </h2>
     <div class="col-md-3 col-sm-6">
         <h2>BullDozers</h2>
         
         <h4 style="margin-top: 55px;" >BID Slab : &#8377;{{slabValue | number}}</h4>
         <button class="btn btn-primary" style="width: 100%;" ng-if="userData.isAuctioneer" ng-click="bidByBulldozers()" >BullDozers Bid</button>
     </div>
-    <div class="col-md-6"  style="border-left: 1px solid;border-right:1px solid;">
+    <div class="col-md-6"  style="border-left: 2px solid #ecebeb;border-right:2px solid #ecebeb;">
             <div class="col-md-6 col-sm-6">
                 <h2 c>{{remainingPlayers[0].name}}</h2>
                 <img  alt="image" style="width: 150px;height: 150px;border-radius: 50%;" ng-src="{{remainingPlayers[0].profile_picture}}">
@@ -138,7 +138,7 @@
 <!--current bid-->
 
 <div class="col-md-12" style="background-color: white;" ng-if="auctionFeed.length > 0">
-    <div class="col-md-12" style="border-top: 1px solid;">
+    <div class="col-md-12" style="border-top: 2px solid #ecebeb;">
         <div style="margin-top: 20px;margin-bottom: 10px;">
             <h1 class="inline-display">Live Feed </h1>
             <i class="fa fa-refresh fa-2x" style="cursor: pointer;" ng-click="refresh()"></i>
