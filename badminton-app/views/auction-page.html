@@ -143,11 +143,11 @@
             <h1 class="inline-display">Live Feed </h1>
             <i class="fa fa-refresh fa-2x" style="cursor: pointer;" ng-click="refresh()"></i>
         </div>
-        <div ng-repeat="feed in auctionFeed | limitTo: 3">
-            <div class="inline-display">
+        <div style="margin-bottom: 30px;margin-top:30px;" ng-repeat="feed in auctionFeed | limitTo: 3">
+            
                 <img class="live-player-image" alt="image" ng-src="{{feed.profilePic}}" width="50">
-                <h3>{{feed.teamName}} {{feed.bidType}} &#8377; {{feed.price | number}} for {{feed.playerName}}</h3>
-            </div>
+                <div class="inline-display" style="font-size: 24px;margin-left: 20px;margin-bottom:20px;">{{feed.teamName}} {{feed.bidType}} &#8377; {{feed.price | number}} for {{feed.playerName}}</div>
+            
         </div>
 
     </div>
