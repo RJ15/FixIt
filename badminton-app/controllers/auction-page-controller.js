@@ -90,7 +90,6 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             
             $scope.startSpin();
             if (response.statusCode) {
-                alert("bid success");
                 $scope.stopSpin();
             }
             else {
@@ -160,7 +159,6 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             
             $scope.startSpin();
             if (response.statusCode) {
-                alert("bid success");
                 $scope.stopSpin();
             }
             else {

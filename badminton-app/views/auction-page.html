@@ -70,7 +70,7 @@
                     </div>
                     <div class="textAlign">
                         <h3>{{player.name}}</h3>
-                        <h5 ng-if="player.price">(&#8377; {{player.price | number}})</h5>
+                        <h5>(&#8377; {{player.price | number}})</h5>
                     </div>
             </div>
         </div>
@@ -84,7 +84,7 @@
         <h2>BullDozers</h2>
         
         <h4 style="margin-top: 55px;" >BID Slab : &#8377;{{slabValue | number}}</h4>
-        <button class="btn btn-primary" style="width: 100%;"   ng-click="bidByBulldozers()" >BullDozers Bid</button>
+        <button class="btn btn-primary" style="width: 100%;" ng-if="userData.isAuctioneer" ng-click="bidByBulldozers()" >BullDozers Bid</button>
     </div>
     <div class="col-md-6"  style="border-left: 1px solid;border-right:1px solid;">
             <div class="col-md-6 col-sm-6">
@@ -123,13 +123,13 @@
                     </tbody>
                 </table>
             </div>
-            <button class="btn btn-warning" style="margin-left: 40px;width: 30%;" ng-click="wonBid()">Wins</button> 
+            <button class="btn btn-warning" style="margin-left: 40px;width: 30%;" ng-if="userData.isAuctioneer" ng-click="wonBid()">Wins</button> 
     </div>
     <div class="col-md-3 col-sm-6">
         <h2>SmashDroppers</h2>
         
         <h4 style="margin-top:55px;">BID Slab :&#8377;{{slabValue | number}}</h4>
-        <button class="btn btn-primary" style="width: 100%;"  ng-click="bidBySmashDroppers()">SmashDroppers Bid</button>
+        <button class="btn btn-primary" style="width: 100%;" ng-if="userData.isAuctioneer" ng-click="bidBySmashDroppers()">SmashDroppers Bid</button>
     </div>
 </div>
 <div class="col-md-12 textAlign" ng-if="remainingPlayers.length == 0" style="background-color: white">
