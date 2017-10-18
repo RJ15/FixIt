@@ -33,7 +33,8 @@
             </div>
             <div class="textAlign">
                 <h3>{{player.name}}</h3>
-                <h5>(&#8377;{{player.price | number}})</h5>
+                <div ng-if="player.price != null">(&#8377; {{player.price | number}})</div>
+                <div ng-if="player.price == null"><b>(Owner)</b></div>
             </div>
         </div>
     </div>
@@ -70,7 +71,8 @@
                     </div>
                     <div class="textAlign">
                         <h3>{{player.name}}</h3>
-                        <h5>(&#8377; {{player.price | number}})</h5>
+                        <div ng-if="player.price != null">(&#8377; {{player.price | number}})</div>
+                        <div ng-if="player.price == null"><b>(Owner)</b></div>
                     </div>
             </div>
         </div>

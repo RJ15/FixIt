@@ -53,12 +53,8 @@ angular.module('badminton').controller('auctionPageController', function ($scope
         }
     }
     $scope.$on('$viewContentLoaded', function () {
-        $scope.refresh();
-        if ($rootScope.userData != undefined){
-            if ($rootScope.userData.isOwner && $rootScope.userData.playerId != "manasa-n") {
-                $scope.isBulldozerOwner = false;
-            }     
-        }
+        $scope.getSeasons();
+        
     });
 
 
@@ -120,6 +116,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
                 alert("bid won");
                 $scope.stopSpin();
                 $scope.refresh();
+                $scope.getSeasons();
                 $scope.bidPrice = 100000;
                 $scope.slabValue = 100000;
 
@@ -221,6 +218,12 @@ angular.module('badminton').controller('auctionPageController', function ($scope
 
         })
 
+        
+
+    }
+    
+    $scope.getSeasons = function(){
+        // $scope.getColor();
         $game.getSeasonsTeamsPlayers().then(function (response) {
             $scope.startSpin();
             if (response.statusCode) {
@@ -271,7 +274,6 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             $scope.stopSpin();
 
         })
-
     }
 
     $scope.gotoHome = function () {
