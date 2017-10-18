@@ -207,7 +207,6 @@ angular.module('badminton').controller('auctionPageController', function ($scope
                         } 
                         $scope.auctionFeed[i] = feed;
                     }
-                    $scope.auctionFeed.reverse();
                 }
                 $scope.stopSpin();
             }
