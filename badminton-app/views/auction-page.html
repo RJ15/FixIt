@@ -17,12 +17,41 @@
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book.
         </div>
+         <div class="col-md-12">
+                <h2>Stats</h2>
+                <table class="table table-striped table-bordered col-md-6">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr>
+                            <td>Rank</td>
+                            <td>9</td>
+                        </tr> -->
+                        <tr>
+                            <td>Played</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <td>Won</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>Lost</td>
+                            <td>6</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
         <div class="col-md-12">
             <h2>Players</h2>
             <div class="col-md-4 " ng-repeat="player in teams[0].players" style="margin-bottom: 30px;">
-                <div>
+                <center>
                     <img class="player-image" alt="user"  style="border:2px solid #030303;"  ng-src="{{player.profilePic}}" />
-                </div>
+                </center>
                 <div class="textAlign">
                     <h3>{{player.name}}</h3>
                     <div ng-if="player.price != null">(&#8377; {{player.price | number}})</div>
@@ -48,12 +77,41 @@
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
                 and scrambled it to make a type specimen book.
             </div>
+            <div class="col-md-12">
+                <h2>Stats</h2>
+                <table class="table table-striped table-bordered col-md-6">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr>
+                            <td>Rank</td>
+                            <td>9</td>
+                        </tr> -->
+                        <tr>
+                            <td>Played</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <td>Won</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>Lost</td>
+                            <td>10</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
            <div class="col-md-12">
                <h2>Players</h2>
                 <div class="col-md-4" ng-repeat="player in teams[1].players" style="margin-bottom: 30px;">
-                        <div>
+                        <center>
                             <img class="player-image" style="border:2px solid #030303;" alt="user" ng-src="{{player.profilePic}}" />
-                        </div>
+                        </center>
                         <div class="textAlign">
                             <h3>{{player.name}}</h3>
                             <div ng-if="player.price != null">(&#8377; {{player.price | number}})</div>
@@ -64,6 +122,9 @@
         </div>
     </div>
 </div>
+
+
+
 <!--bid board-->
 
 <div class="col-md-12 col-sm-12" style="background-color: white;padding-top:10px;padding-bottom: 10px;" ng-if="remainingPlayers.length >0">
@@ -96,10 +157,11 @@
         
         <h4 style="margin-top: 55px;" >BID Slab: &#8377;{{slabValue | number}}</h4>
         <button class="btn btn-primary" style="width: 100%;" ng-if="userData.isAuctioneer" ng-click="bidByBulldozers()" >BullDozers Bid</button>
+        <div ng-if="bidBy == 'bull-dozers'" style="width: 50px;margin-top:20px;height: 50px;background-color: #0fdf0f;border-radius: 50%;border: 4px solid;"></div> 
     </div>
     <div class="col-md-6"  style="border-left: 2px solid #ecebeb;border-right:2px solid #ecebeb;">
             <div class="col-md-6 col-sm-6">
-                <h2 >{{remainingPlayers[0].name}}</h2>
+                <h2>{{remainingPlayers[0].name}}</h2>
                 <img  alt="image" style="width: 150px;height: 150px;border-radius: 50%;border:2px solid #030303;" ng-src="{{remainingPlayers[0].profile_picture}}">
                 <h4 style="margin-top:25px;">Current BID </h4>
                 <h3 style="margin:0;"> &#8377;{{bidPrice | number}}</h3>
@@ -134,18 +196,22 @@
                     </tbody>
                 </table>
             </div>
-            <button class="btn btn-warning" style="margin-left: 40px;width: 30%;" ng-if="userData.isAuctioneer" ng-click="wonBid()">Wins</button> 
+            <button class="btn btn-warning" style="margin-left: 40px;width: 30%;" ng-if="userData.isAuctioneer" ng-disabled="bidPrice== 0" ng-click="wonBid()">Wins</button> 
     </div>
     <div class="col-md-3 col-sm-6">
         <h2>SmashDroppers</h2>
         
         <h4 style="margin-top:55px;">BID Slab: &#8377;{{slabValue | number}}</h4>
         <button class="btn btn-primary" style="width: 100%;" ng-if="userData.isAuctioneer" ng-click="bidBySmashDroppers()">SmashDroppers Bid</button>
+        <div ng-if="bidBy == 'smash-droppers'" style="width: 50px;margin-top:20px;height: 50px;background-color: #0fdf0f;border-radius: 50%;border: 4px solid;"></div> 
     </div>
 </div>
 <div class="col-md-12 textAlign" ng-if="remainingPlayers.length == 0" style="background-color: white">
    <h2>No Players available for bidding!!!<h2>
 </div>
+
+
+
 
 
 <!--current bid-->
@@ -160,8 +226,8 @@
                 
                 <img class="live-player-image" ng-if="feed.teamName == 'Bulldozers'" alt="image" src="img/BullDozers.jpg" width="50">
                 <img class="live-player-image" ng-if="feed.teamName == 'SmashDroppers'" alt="image" src="img/SmashDroppers.jpg" width="50">
-                <div class="inline-display" style="font-size: 20px;margin-left: 20px;margin-bottom:20px;" ng-if="feed.bidType=='bids'"><b>{{feed.teamName}}</b> <i>{{feed.bidType}}</i> &#8377;{{feed.price | number}} for <b>{{feed.playerName}}</b></div>
-                <div class="inline-display" style="font-size: 20px;margin-left: 20px;margin-bottom:20px;" ng-if="feed.bidType=='wins'"><b>{{feed.teamName}}</b> <i>{{feed.bidType}}</i> <b> {{feed.playerName}}</b> for   &#8377;{{feed.price | number}}</div>
+                <div class="inline-display" style="font-size: 16px;margin-left: 20px;margin-bottom:20px;" ng-if="feed.bidType=='bids'"><b>{{feed.teamName}}</b> <i>{{feed.bidType}}</i> &#8377;{{feed.price | number}} for <b>{{feed.playerName}}</b></div>
+                <div class="inline-display" style="font-size: 16px;margin-left: 20px;margin-bottom:20px;" ng-if="feed.bidType=='wins'"><b>{{feed.teamName}}</b> <i>{{feed.bidType}}</i> <b> {{feed.playerName}}</b> for   &#8377;{{feed.price | number}}</div>
             
         </div>
 

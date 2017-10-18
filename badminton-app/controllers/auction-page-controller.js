@@ -9,7 +9,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     $scope.remainingPlayers = {};
     $scope.progressValue1 = "100%";
     $scope.progressValue2 = "100%";
-    $scope.bidPrice = 100000;
+    $scope.bidPrice = 0;
     $scope.slabValue = 100000;
     $scope.message = false;
     $scope.isBulldozerOwner = true;
@@ -119,7 +119,8 @@ angular.module('badminton').controller('auctionPageController', function ($scope
                 $scope.stopSpin();
                 $scope.refresh();
                 $scope.getSeasons();
-                $scope.bidPrice = 100000;
+                $scope.bidPrice = 0;
+                $scope.bidBy ="";
                 $scope.slabValue = 100000;
 
             }
