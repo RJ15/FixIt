@@ -18,23 +18,16 @@
             and scrambled it to make a type specimen book.
         </div>
         <div class="col-md-12">
-                <h3>Budget Remaining</h3><br/>
-                <h4>&#8377; {{teams[0].remainingBudget | number}} / &#8377; {{seasons.totalBudget | number}} </h4>
-                <div class="progress" style="border:1px solid black;">
-                    <div class="progress-bar team1" ng-class="getColor(progressValue1)" role="progressbar" aria-valuenow="progressValue1" aria-valuemin="0"
-                            aria-valuemax="100">
-                      {{progressValue1}}% (left)
-                    </div>
+            <h2>Players</h2>
+            <div class="col-md-4 " ng-repeat="player in teams[0].players" style="margin-bottom: 30px;">
+                <div>
+                    <img class="player-image" alt="user" ng-src="{{player.profilePic}}" />
                 </div>
-        </div>
-        <div class="col-md-4 " ng-repeat="player in teams[0].players" style="margin-bottom: 30px;">
-            <div>
-                <img class="player-image" alt="user" ng-src="{{player.profilePic}}" />
-            </div>
-            <div class="textAlign">
-                <h3>{{player.name}}</h3>
-                <div ng-if="player.price != null">(&#8377; {{player.price | number}})</div>
-                <div ng-if="player.price == null"><b>(Owner)</b></div>
+                <div class="textAlign">
+                    <h3>{{player.name}}</h3>
+                    <div ng-if="player.price != null">(&#8377; {{player.price | number}})</div>
+                    <div ng-if="player.price == null"><b>(Owner)</b></div>
+                </div>
             </div>
         </div>
     </div>
@@ -55,42 +48,58 @@
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
                 and scrambled it to make a type specimen book.
             </div>
-            <div class="col-md-12">
-                <h3>Budget Remaining</h3><br/>
-                <h4>&#8377;{{teams[1].remainingBudget | number}} / &#8377; {{seasons.totalBudget | number}} </h4>
-                <div class="progress" style="border:1px solid black;">
-                    <div class="progress-bar team2" ng-class="getColor(progressValue2)" role="progressbar" aria-valuenow="progressValue2" aria-valuemin="0"
-                    aria-valuemax="100">
-                    {{progressValue2}}% (left)
-                    </div>
+           <div class="col-md-12">
+               <h2>Players</h2>
+                <div class="col-md-4" ng-repeat="player in teams[1].players" style="margin-bottom: 30px;">
+                        <div>
+                            <img class="player-image" alt="user" ng-src="{{player.profilePic}}" />
+                        </div>
+                        <div class="textAlign">
+                            <h3>{{player.name}}</h3>
+                            <div ng-if="player.price != null">(&#8377; {{player.price | number}})</div>
+                            <div ng-if="player.price == null"><b>(Owner)</b></div>
+                        </div>
                 </div>
-            </div>
-            <div class="col-md-4" ng-repeat="player in teams[1].players" style="margin-bottom: 30px;">
-                    <div>
-                        <img class="player-image" alt="user" ng-src="{{player.profilePic}}" />
-                    </div>
-                    <div class="textAlign">
-                        <h3>{{player.name}}</h3>
-                        <div ng-if="player.price != null">(&#8377; {{player.price | number}})</div>
-                        <div ng-if="player.price == null"><b>(Owner)</b></div>
-                    </div>
-            </div>
+           </div>
         </div>
     </div>
 </div>
 <!--bid board-->
 
-<div class="col-md-12 col-sm-12" style="background-color: white;padding-top:10px;padding-bottom: 10px;" ng-if="remainingPlayers.length > 0">
+<div class="col-md-12 col-sm-12" style="background-color: white;padding-top:10px;padding-bottom: 10px;" ng-if="remainingPlayers.length >0">
     <h2 style="margin-left: 15px;padding-bottom: 10px;border-bottom: 2px solid #ecebeb;"> Bid board </h2>
+    <div class="col-md-12" style="padding: 0;border-bottom: 2px solid #ecebeb;padding-bottom: 10px;">
+        <div class="col-md-6">
+                <h3>Budget Remaining [BullDozers]</h3><br/>
+                <h4>&#8377; {{teams[0].remainingBudget | number}} / &#8377; {{seasons.totalBudget | number}} </h4>
+                <div class="progress" style="border:1px solid black;">
+                    <div class="progress-bar team1" ng-class="getColor(progressValue1,team1);"   role="progressbar" aria-valuenow="progressValue1" aria-valuemin="0"
+                            aria-valuemax="100">
+                      {{progressValue1}}% (left)
+                    </div>
+                </div>
+        </div>
+         <div class="col-md-6" style="border-left:2px solid #ecebeb;">
+                <h3>Budget Remaining [SmashDroppers]</h3><br/>
+                <h4>&#8377;{{teams[1].remainingBudget | number}} / &#8377; {{seasons.totalBudget | number}} </h4>
+                <div class="progress" style="border:1px solid black;">
+                    <div class="progress-bar team2" ng-class="getColor(progressValue2,team2);" role="progressbar" aria-valuenow="progressValue2" aria-valuemin="0"
+                    aria-valuemax="100">
+                    {{progressValue2}}% (left)
+                    </div> 
+                </div>
+        </div>
+    </div>
     <div class="col-md-3 col-sm-6">
         <h2>BullDozers</h2>
+        
         
         <h4 style="margin-top: 55px;" >BID Slab : &#8377;{{slabValue | number}}</h4>
         <button class="btn btn-primary" style="width: 100%;" ng-if="userData.isAuctioneer" ng-click="bidByBulldozers()" >BullDozers Bid</button>
     </div>
     <div class="col-md-6"  style="border-left: 2px solid #ecebeb;border-right:2px solid #ecebeb;">
             <div class="col-md-6 col-sm-6">
-                <h2 c>{{remainingPlayers[0].name}}</h2>
+                <h2 >{{remainingPlayers[0].name}}</h2>
                 <img  alt="image" style="width: 150px;height: 150px;border-radius: 50%;" ng-src="{{remainingPlayers[0].profile_picture}}">
                 <h4 style="margin-top:25px;">Current BID </h4>
                 <h3 style="margin:0;"> &#8377;{{bidPrice | number}}</h3>

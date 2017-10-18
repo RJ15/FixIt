@@ -14,6 +14,8 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     $scope.message = false;
     $scope.isBulldozerOwner = true;
     $scope.bidBy = "";
+    $scope.team1 ="team1";
+    $scope.team2 = "team2";
     // $scope.counter = 30;
     // var stopped;
 
@@ -38,7 +40,8 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     $scope.stopSpin = function () {
         usSpinnerService.stop('spinner-1');
     }
-    $scope.getColor = function (budgetLeft) {
+    $scope.getColor = function (budgetLeft,team) {
+        document.getElementsByClassName(team)[0].style.width = budgetLeft + "%";
         if (budgetLeft <= 25 || budgetLeft <= 25) {
             return "redColor";
         } 
@@ -58,8 +61,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     });
 
 
-
-
+    
 
     $scope.bidBySmashDroppers = function () {
         
@@ -231,6 +233,10 @@ angular.module('badminton').controller('auctionPageController', function ($scope
                 $scope.seasons = response.body;
                 $scope.teams = $scope.seasons.teams;
                 if ($scope.teams) {
+                    $scope.progressValue1 = ($scope.teams[0].remainingBudget / $scope.seasons.totalBudget) * 100;
+                    
+                    $scope.progressValue2 = ($scope.teams[1].remainingBudget / $scope.seasons.totalBudget) * 100;
+                    
                     for (var i = 0; i < $scope.teams.length; i++) {
                         var teams = $scope.teams[i];
                         for (var j = 0; j < teams.players.length; j++) {
@@ -243,12 +249,10 @@ angular.module('badminton').controller('auctionPageController', function ($scope
                         $scope.teams[i] = teams;
                     }
                 }
-                $scope.progressValue1 = ($scope.teams[0].remainingBudget / $scope.seasons.totalBudget) * 100;
-                document.getElementsByClassName("team1")[0].style.width = $scope.progressValue1 + "%";
-                $scope.progressValue2 = ($scope.teams[1].remainingBudget / $scope.seasons.totalBudget) * 100;
-                document.getElementsByClassName("team2")[0].style.width = $scope.progressValue2 + "%";
+                
                 $scope.remainingPlayers = $scope.seasons.remainingPlayers;
-                if ($scope.remainingPlayers) {
+                if ($scope.remainingPlayers.length >0) {
+                    
                     for (var i = 0; i < $scope.remainingPlayers.length; i++) {
                         var remainingPlayer = $scope.remainingPlayers[i];
                         if(remainingPlayer.profile_picture == null) {
