@@ -21,7 +21,7 @@
             <h2>Players</h2>
             <div class="col-md-4 " ng-repeat="player in teams[0].players" style="margin-bottom: 30px;">
                 <div>
-                    <img class="player-image" alt="user" ng-src="{{player.profilePic}}" />
+                    <img class="player-image" alt="user"  style="border:2px solid #030303;"  ng-src="{{player.profilePic}}" />
                 </div>
                 <div class="textAlign">
                     <h3>{{player.name}}</h3>
@@ -52,7 +52,7 @@
                <h2>Players</h2>
                 <div class="col-md-4" ng-repeat="player in teams[1].players" style="margin-bottom: 30px;">
                         <div>
-                            <img class="player-image" alt="user" ng-src="{{player.profilePic}}" />
+                            <img class="player-image" style="border:2px solid #030303;" alt="user" ng-src="{{player.profilePic}}" />
                         </div>
                         <div class="textAlign">
                             <h3>{{player.name}}</h3>
@@ -75,7 +75,7 @@
                 <div class="progress" style="border:1px solid black;">
                     <div class="progress-bar team1" ng-class="getColor(progressValue1,team1);"   role="progressbar" aria-valuenow="progressValue1" aria-valuemin="0"
                             aria-valuemax="100">
-                      {{progressValue1}}% (left)
+                      {{progressValue1 | number}}% (left)
                     </div>
                 </div>
         </div>
@@ -85,7 +85,7 @@
                 <div class="progress" style="border:1px solid black;">
                     <div class="progress-bar team2" ng-class="getColor(progressValue2,team2);" role="progressbar" aria-valuenow="progressValue2" aria-valuemin="0"
                     aria-valuemax="100">
-                    {{progressValue2}}% (left)
+                    {{progressValue2 | number}}% (left)
                     </div> 
                 </div>
         </div>
@@ -94,13 +94,13 @@
         <h2>BullDozers</h2>
         
         
-        <h4 style="margin-top: 55px;" >BID Slab : &#8377;{{slabValue | number}}</h4>
+        <h4 style="margin-top: 55px;" >BID Slab: &#8377;{{slabValue | number}}</h4>
         <button class="btn btn-primary" style="width: 100%;" ng-if="userData.isAuctioneer" ng-click="bidByBulldozers()" >BullDozers Bid</button>
     </div>
     <div class="col-md-6"  style="border-left: 2px solid #ecebeb;border-right:2px solid #ecebeb;">
             <div class="col-md-6 col-sm-6">
                 <h2 >{{remainingPlayers[0].name}}</h2>
-                <img  alt="image" style="width: 150px;height: 150px;border-radius: 50%;" ng-src="{{remainingPlayers[0].profile_picture}}">
+                <img  alt="image" style="width: 150px;height: 150px;border-radius: 50%;border:2px solid #030303;" ng-src="{{remainingPlayers[0].profile_picture}}">
                 <h4 style="margin-top:25px;">Current BID </h4>
                 <h3 style="margin:0;"> &#8377;{{bidPrice | number}}</h3>
                 <h3 ng-if="message">"You have exceeded the bidding range. So start from beginning!!!"</h3>
@@ -139,32 +139,41 @@
     <div class="col-md-3 col-sm-6">
         <h2>SmashDroppers</h2>
         
-        <h4 style="margin-top:55px;">BID Slab :&#8377;{{slabValue | number}}</h4>
+        <h4 style="margin-top:55px;">BID Slab: &#8377;{{slabValue | number}}</h4>
         <button class="btn btn-primary" style="width: 100%;" ng-if="userData.isAuctioneer" ng-click="bidBySmashDroppers()">SmashDroppers Bid</button>
     </div>
 </div>
 <div class="col-md-12 textAlign" ng-if="remainingPlayers.length == 0" style="background-color: white">
    <h2>No Players available for bidding!!!<h2>
 </div>
+
+
 <!--current bid-->
 
-<div class="col-md-12" style="background-color: white;" ng-if="auctionFeed.length > 0">
-    <div class="col-md-12" style="border-top: 2px solid #ecebeb;">
+<div class="col-md-12" style="background-color: white;">
+    <div class="col-md-6" style="border-top: 2px solid #ecebeb;">
         <div style="margin-top: 20px;margin-bottom: 10px;">
             <h1 class="inline-display">Live Feed </h1>
             <i class="fa fa-refresh fa-2x" style="cursor: pointer;" ng-click="refresh()"></i>
         </div>
         <div style="margin-bottom: 30px;margin-top:30px;" ng-repeat="feed in auctionFeed | limitTo: 3">
-            
-                <img class="live-player-image" alt="image" ng-src="{{feed.profilePic}}" width="50">
-                <div class="inline-display" style="font-size: 24px;margin-left: 20px;margin-bottom:20px;">{{feed.teamName}} {{feed.bidType}} &#8377; {{feed.price | number}} for {{feed.playerName}}</div>
+                
+                <img class="live-player-image" ng-if="feed.teamName == 'Bulldozers'" alt="image" src="img/BullDozers.jpg" width="50">
+                <img class="live-player-image" ng-if="feed.teamName == 'SmashDroppers'" alt="image" src="img/SmashDroppers.jpg" width="50">
+                <div class="inline-display" style="font-size: 20px;margin-left: 20px;margin-bottom:20px;" ng-if="feed.bidType=='bids'"><b>{{feed.teamName}}</b> <i>{{feed.bidType}}</i> &#8377;{{feed.price | number}} for <b>{{feed.playerName}}</b></div>
+                <div class="inline-display" style="font-size: 20px;margin-left: 20px;margin-bottom:20px;" ng-if="feed.bidType=='wins'"><b>{{feed.teamName}}</b> <i>{{feed.bidType}}</i> <b> {{feed.playerName}}</b> for   &#8377;{{feed.price | number}}</div>
             
         </div>
 
     </div>
+    <div class="col-md-6" style="border-top: 2px solid #ecebeb;">
+        <div style="margin-top: 20px;margin-bottom: 20px;">
+            <h1 class="inline-display">Remaining Players </h1>
+        </div>
+         <div ng-repeat="player in remainingPlayers" class="inline-display" ng-if="$index!=0">
+                <img class="remaining-player-image" style="margin-bottom: 10px;border:2px solid #030303;"  alt="user" ng-src="{{player.profile_picture}}" />
+        </div>
+
+    </div>
 </div>
-<!--<div class="col-md-12" style="background-color: white;">
-<h2>Current Top Bid : &#8377;35 Lakhs by Team Manasa</h2>
-</div>
-<br/>
-<br/>-->
+
