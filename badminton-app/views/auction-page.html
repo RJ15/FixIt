@@ -4,19 +4,24 @@
 <button ng-click="stopSpin()">Stop spinner</button> -->
 
 <span us-spinner spinner-key="spinner-1"></span>
-<div class="col-md-12" style="background-color: white;">
+<div class="col-md-12 bg-white">
+
+    <!--1st team-->
     <div class="col-md-6 col-sm-12"><br/><br/>
         <div class="panel1">
+        <!--team name division-->
         <div class="col-md-12">
             <div class="inline-display">
                 <img alt="Team1" class="team-image" src="img/BullDozers.jpg">
                 <h1>{{teams[0].teamName}}</h1>
             </div>
         </div>
+         <!--team description division-->
         <div class="col-md-12">
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book.
         </div>
+         <!--team stats division-->
          <div class="col-md-12">
                 <h2>Stats</h2>
                 <table class="table table-striped table-bordered col-md-6">
@@ -46,11 +51,12 @@
                     </tbody>
                 </table>
         </div>
+         <!--players division-->
         <div class="col-md-12">
             <h2>Players</h2>
-            <div class="col-md-4 " ng-repeat="player in teams[0].players" style="margin-bottom: 30px;">
+            <div class="col-md-4 mb30" ng-repeat="player in teams[0].players">
                 <center>
-                    <img class="player-image" alt="user"  style="border:2px solid #030303;"  ng-src="{{player.profilePic}}" />
+                    <img class="player-image img-border" alt="user" ng-src="{{player.profilePic}}" />
                 </center>
                 <div class="textAlign">
                     <h3>{{player.name}}</h3>
@@ -63,20 +69,22 @@
 
     </div>
 
-<!--two teams-->
-
-    <div class="col-md-6 col-sm-12" style="background-color: white;"><br/><br/>
+    <!--2nd team-->
+    <div class="col-md-6 col-sm-12 bg-white"><br/><br/>
         <div class="panel1">
+            <!--division for team name -->
             <div class="col-md-12">
                 <div class="inline-display">
                     <img alt="Team1" class="team-image" src="img/SmashDroppers.jpg">
                     <h1>{{teams[1].teamName}}</h1>
                 </div>
             </div>
+            <!--division for team description -->
             <div class="col-md-12">
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
                 and scrambled it to make a type specimen book.
             </div>
+            <!--division for team stats -->
             <div class="col-md-12">
                 <h2>Stats</h2>
                 <table class="table table-striped table-bordered col-md-6">
@@ -105,10 +113,11 @@
                         </tr>
                     </tbody>
                 </table>
-        </div>
+            </div>
+            <!--division for players-->
            <div class="col-md-12">
                <h2>Players</h2>
-                <div class="col-md-4" ng-repeat="player in teams[1].players" style="margin-bottom: 30px;">
+                <div class="col-md-4 mb30" ng-repeat="player in teams[1].players">
                         <center>
                             <img class="player-image" style="border:2px solid #030303;" alt="user" ng-src="{{player.profilePic}}" />
                         </center>
@@ -127,49 +136,71 @@
 
 <!--bid board-->
 
-<div class="col-md-12 col-sm-12" style="background-color: white;padding-top:10px;padding-bottom: 10px;" ng-if="remainingPlayers.length >0">
-    <h2 style="margin-left: 15px;padding-bottom: 10px;border-bottom: 2px solid #ecebeb;"> Bid board </h2>
-    <div class="col-md-12" style="padding: 0;border-bottom: 2px solid #ecebeb;padding-bottom: 10px;">
+
+
+<div class="col-md-12 col-sm-12 bg-white ptb-10" ng-if="remainingPlayers.length >0">
+    <!--bid board heading-->
+    <h2 class="ml15 pb10 bb2"> Bid board </h2>
+    <!--division for budget-->
+    <div class="col-md-12 p0 bb2 pb10">
+
+        <!--team1 budget-->
         <div class="col-md-6">
-                <h3>Budget Remaining [BullDozers]</h3><br/>
-                <h4>&#8377; {{teams[0].remainingBudget | number}} / &#8377; {{seasons.totalBudget | number}} </h4>
-                <div class="progress" style="border:1px solid black;">
-                    <div class="progress-bar team1" ng-class="getColor(progressValue1,team1);"   role="progressbar" aria-valuenow="progressValue1" aria-valuemin="0"
-                            aria-valuemax="100">
+            <h3>Budget Remaining [BullDozers]</h3><br/>
+            <h4>&#8377; {{teams[0].remainingBudget | number}} / &#8377; {{seasons.totalBudget | number}} </h4>
+            <div class="progress border-common">
+                <div class="progress-bar team1" ng-class="getColor(progressValue1,team1);" role="progressbar" 
+                aria-valuenow="progressValue1" aria-valuemin="0" aria-valuemax="100">
                       {{progressValue1 | number:0}}% (left)
-                    </div>
                 </div>
+             </div>
         </div>
-         <div class="col-md-6" style="border-left:2px solid #ecebeb;">
+
+        <!--team2 budget-->
+         <div class="col-md-6 bl2">
                 <h3>Budget Remaining [SmashDroppers]</h3><br/>
                 <h4>&#8377;{{teams[1].remainingBudget | number}} / &#8377; {{seasons.totalBudget | number}} </h4>
-                <div class="progress" style="border:1px solid black;">
-                    <div class="progress-bar team2" ng-class="getColor(progressValue2,team2);" role="progressbar" aria-valuenow="progressValue2" aria-valuemin="0"
+                <div class="progress border-common">
+                    <div class="progress-bar team2" ng-class="getColor(progressValue2,team2);" role="progressbar"
+                     aria-valuenow="progressValue2" aria-valuemin="0"
                     aria-valuemax="100">
                     {{progressValue2 | number:0}}% (left)
                     </div> 
                 </div>
         </div>
     </div>
+
+    <!--teams bid action division-->
     <div class="col-md-3 col-sm-6">
+
+        <!--team name-->
         <h2>BullDozers</h2>
-        
-        
-        <h4 style="margin-top: 55px;" >BID Slab: &#8377;{{slabValue | number}}</h4>
-        <button class="btn btn-primary" style="width: 100%;" ng-if="userData.isAuctioneer" ng-click="bidByBulldozers()" >BullDozers Bid</button>
+
+        <!--slab value-->
+        <h4 class="mt55">BID Slab: &#8377;{{slabValue | number}}</h4>
+
+        <!--bid button-->
+        <button class="btn btn-primary width-100" ng-if="userData.isAuctioneer" ng-click="bidByBulldozers()" >BullDozers Bid</button>
+
+        <!--bid status-->
         <center>
-            <div ng-if="bidBy == 'bull-dozers'" style="width: 50px;margin-top:20px;height: 50px;background-color: #0fdf0f;border-radius: 50%;border: 4px solid;"></div> 
+            <div class="bid-status" ng-if="bidBy == 'bull-dozers'"></div> 
         </center>
     </div>
-    <div class="col-md-6"  style="border-left: 2px solid #ecebeb;border-right:2px solid #ecebeb;">
-            <div class="col-md-6 col-sm-6">
-                <h2>{{remainingPlayers[0].name}}</h2>
-                <img  alt="image" style="width: 150px;height: 150px;border-radius: 50%;border:2px solid #030303;" ng-src="{{remainingPlayers[0].profile_picture}}">
-                <h4 style="margin-top:25px;">Current BID </h4>
-                <h3 style="margin:0;"> &#8377;{{bidPrice | number}}</h3>
-                <h3 ng-if="message">"You have exceeded the bidding range. So start from beginning!!!"</h3>
-            </div>
-            <div class="col-md-6 col-sm-6">
+
+    <!--current bid division-->
+    <div class="col-md-6 bl2 br2">
+
+        <!--Player name,pic and current bid value-->
+        <div class="col-md-6 col-sm-6">
+            <h2>{{remainingPlayers[0].name}}</h2>
+            <img class="current-bid-img" alt="image" ng-src="{{remainingPlayers[0].profile_picture}}">
+            <h4 class="mt25">Current BID</h4>
+            <h3 class="m0"> &#8377;{{bidPrice | number}}</h3>
+            <h3 ng-if="message">"You have exceeded the bidding range. So start from beginning!!!"</h3>
+        </div>
+        <!--player stats -->
+        <div class="col-md-6 col-sm-6">
                 <h2>Stats</h2>
                 <table class="table table-striped table-bordered col-md-4">
                     <thead>
@@ -198,19 +229,24 @@
                     </tbody>
                 </table>
             </div>
-            <button class="btn btn-warning" style="margin-left: 40px;width: 30%;" ng-if="userData.isAuctioneer" ng-disabled="bidPrice== 0" ng-click="wonBid()">Wins</button> 
+
+            <!--win bid button-->
+            <button class="btn btn-warning ml40 width-30" ng-if="userData.isAuctioneer" ng-disabled="bidPrice== 0" ng-click="wonBid()">Win</button> 
     </div>
+
+    <!--team2 division-->
     <div class="col-md-3 col-sm-6">
+
+        <!--team name-->
         <h2>SmashDroppers</h2>
-        
-        <h4 style="margin-top:55px;">BID Slab: &#8377;{{slabValue | number}}</h4>
-        <button class="btn btn-primary" style="width: 100%;" ng-if="userData.isAuctioneer" ng-click="bidBySmashDroppers()">SmashDroppers Bid</button>
+        <h4 class="mt55">BID Slab: &#8377;{{slabValue | number}}</h4>
+        <button class="btn btn-primary width-100" ng-if="userData.isAuctioneer" ng-click="bidBySmashDroppers()">SmashDroppers Bid</button>
         <center>
-            <div ng-if="bidBy == 'smash-droppers'" style="width: 50px;margin-top:20px;height: 50px;background-color: #0fdf0f;border-radius: 50%;border: 4px solid;"></div> 
+            <div class="bid-status" ng-if="bidBy == 'smash-droppers'"></div> 
         </center>
     </div>
 </div>
-<div class="col-md-12 textAlign" ng-if="remainingPlayers.length == 0" style="background-color: white">
+<div class="col-md-12 textAlign bg-white" ng-if="remainingPlayers.length == 0">
    <h2>No Players available for bidding!!!<h2>
 </div>
 
@@ -218,32 +254,52 @@
 
 
 
-<!--current bid-->
+<!--live feed and remaining players division-->
 
-<div class="col-md-12" style="background-color: white;">
-    <div class="col-md-6" style="border-top: 2px solid #ecebeb;">
-        <div style="margin-top: 20px;margin-bottom: 10px;">
+<div class="col-md-12 bg-white" ng-if="remainingPlayers.length != 0">
+
+    <!--live feed division-->
+    <div class="col-md-6 bt2">
+
+        <!--live feed name and refresh button-->
+        <div class="mt20 mb10">
             <h1 class="inline-display">Live Feed </h1>
-            <i class="fa fa-refresh fa-2x" style="cursor: pointer;" ng-click="refresh()"></i>
+            <i class="fa fa-refresh fa-2x pointer-cursor" ng-click="refresh()"></i>
         </div>
-        <div style="margin-bottom: 30px;margin-top:30px;" ng-repeat="feed in auctionFeed | limitTo: 3">
-                
+
+        <!--live feed array-->
+        <div class="mb30 mt30" ng-repeat="feed in auctionFeed | limitTo: 3">
+
+                <!--team image based on team name-->
                 <img class="live-player-image" ng-if="feed.teamName == 'Bulldozers'" alt="image" src="img/BullDozers.jpg" width="50">
                 <img class="live-player-image" ng-if="feed.teamName == 'SmashDroppers'" alt="image" src="img/SmashDroppers.jpg" width="50">
-                <div class="inline-display" style="font-size: 16px;margin-left: 20px;margin-bottom:20px;" ng-if="feed.bidType=='bids'"><b>{{feed.teamName}}</b> <i>{{feed.bidType}}</i> &#8377;{{feed.price | number}} for <b>{{feed.playerName}}</b></div>
-                <div class="inline-display" style="font-size: 16px;margin-left: 20px;margin-bottom:20px;" ng-if="feed.bidType=='wins'"><b>{{feed.teamName}}</b> <i>{{feed.bidType}}</i> <b> {{feed.playerName}}</b> for   &#8377;{{feed.price | number}}</div>
-            
-        </div>
 
+                <!--live feed statements based on bid type-->
+                <div class="inline-display fs16 mb20 ml20" ng-if="feed.bidType=='bids'">
+                    <b>{{feed.teamName}}</b> 
+                    <i>{{feed.bidType}}</i> &#8377;{{feed.price | number}} for <b>{{feed.playerName}}</b>
+                </div>
+                <div class="inline-display fs16 mb20 ml20" ng-if="feed.bidType=='wins'">
+                    <b>{{feed.teamName}}</b> <i>{{feed.bidType}}</i>
+                    <b> {{feed.playerName}}</b> for   &#8377;{{feed.price | number}}
+                </div>
+        </div>
     </div>
-    <div class="col-md-6" style="border-top: 2px solid #ecebeb;">
-        <div style="margin-top: 20px;margin-bottom: 20px;">
+
+    <!--remaining players division-->
+    <div class="col-md-6 bt2" >
+        
+        <!--remaining players heading-->
+        <div class="mt20 mb20">
             <h1 class="inline-display">Remaining Players </h1>
         </div>
+
+        <!--looping remaining players array and dont display first element-->
          <div ng-repeat="player in remainingPlayers" class="inline-display" ng-if="$index!=0">
-                <img class="remaining-player-image" style="margin-bottom: 10px;border:2px solid #030303;"  alt="user" ng-src="{{player.profile_picture}}" />
+                <img class="remaining-player-image mb20 border-2" alt="user" ng-src="{{player.profile_picture}}" />
         </div>
 
     </div>
+    
 </div>
 
