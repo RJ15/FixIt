@@ -24,7 +24,7 @@ angular.module('badminton').controller('loginController', function ($scope, $roo
         }
         $login.doLogin(data).then(function (response) {
             $scope.startSpin();
-            if (response.statusCode) {
+            if (response.statusCode && response.body) {
                 $state.go("auctionPage");
                 $rootScope.userData = response.body;
                 console.log(userData);
