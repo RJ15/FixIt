@@ -2,7 +2,7 @@
 
 console.log('Loading function');
 
-var mysql      = require('mysql');
+var mysql = require('mysql');
 
 exports.handler = (event, context, callback) => {
     var connection = mysql.createConnection({
@@ -25,15 +25,15 @@ exports.handler = (event, context, callback) => {
             return;
         } else {
             console.log('MySQL Connection obtained');
-            var sqlQuery = "SELECT users.user_id as userId, player.id as playerId, player.is_owner as isOwner, player.is_auctioneer as isAuctioneer FROM user_credentials as users JOIN players as player on player.id = users.player_id where user_id = " + connection.escape(event.userName) + " and password = " + connection.escape(event.password);
+            var sqlQuery = "Call doLogin(" + connection.escape(event.userName)+", "+connection.escape(event.password) + ")";
             connection.query(sqlQuery, function(err, rows) {
                 var loginResponse = {};
-                loginResponse = rows;
+                loginResponse = rows[0];
                 rows.forEach(function(item) {
                     loginResponse = item;
                 })
                 console.log(loginResponse);
-                response["body"] = loginResponse;
+                response["body"] = rows[0][0];
                 connection.end(function(err) {
                    callback(null, response); 
                 });

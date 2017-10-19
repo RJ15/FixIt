@@ -25,15 +25,15 @@ exports.handler = (event, context, callback) => {
             return;
         } else {
             console.log('MySQL Connection obtained');
-            var sqlQuery = "SELECT sea.Id AS seasonId, sea.name AS seasonName, sea.overall_budget AS totalBudget, team.Id AS teamId, team.name AS teamName, (sea.overall_budget - SUM(seasons_teams_players.price)) as remainingBudget, player.id AS playerId, player.name AS name, player.profile_picture AS profilePic, seasons_teams_players.price AS price FROM seasons_teams_players JOIN seasons AS sea ON sea.id = seasons_teams_players.season_id JOIN teams AS team ON team.id = seasons_teams_players.team_id JOIN players AS player ON player.id = seasons_teams_players.player_id GROUP BY sea.Id, team.Id, player.id"
-            var sqlQueryForRemainingPlayers = "SELECT  * FROM players as player WHERE player.id NOT IN (SELECT sea_team_player.player_id FROM seasons_teams_players as sea_team_player) and player.is_owner = 0 ORDER BY RAND()"
+            var sqlQuery = "Call getSeasonsTeamsPlayers()";
+            var sqlQueryForRemainingPlayers = "Call getRemainingPlayers()";
             connection.query(sqlQuery, function(err, rows) {
                 var totalBudget = 0;
                 var seasonsTeamsPlayers = {};
-                seasonsTeamsPlayers.seasonId = rows[0].seasonId;
-                seasonsTeamsPlayers.seasonName = rows[0].seasonName;
-                seasonsTeamsPlayers.totalBudget = rows[0].totalBudget;
-                totalBudget = rows[0].totalBudget;
+                seasonsTeamsPlayers.seasonId = rows[0][0].seasonId;
+                seasonsTeamsPlayers.seasonName = rows[0][0].seasonName;
+                seasonsTeamsPlayers.totalBudget = rows[0][0].totalBudget;
+                totalBudget = rows[0][0].totalBudget;
                 rows.map(function(entry) {
                     delete entry.seasonId;
                     delete entry.seasonName;
@@ -43,7 +43,7 @@ exports.handler = (event, context, callback) => {
                 seasonsTeamsPlayers.teams = rows;
 
                 var teamsArray = [];
-                var obj = seasonsTeamsPlayers.teams.reduce(function(arr, team) {
+                var obj = seasonsTeamsPlayers.teams[0].reduce(function(arr, team) {
                     var teamObj = teamsArray[team.teamId];
                     if (!teamObj){
                         teamObj = {};
@@ -57,8 +57,8 @@ exports.handler = (event, context, callback) => {
                     teamPlayer.playerId = team.playerId;
                     teamPlayer.name = team.name;
                     teamPlayer.price = team.price;
-                    teamPlayer.profilePic = team.profilePic
-
+                    teamPlayer.profilePic = team.profilePic;
+                    
                     teamsArray[team.teamId].remainingBudget = teamObj.remainingBudget - team.price;
                     teamsArray[team.teamId].players.push(teamPlayer);
                     return teamsArray;
@@ -72,7 +72,7 @@ exports.handler = (event, context, callback) => {
                 seasonsTeamsPlayers.teams = teams;
 
                 connection.query(sqlQueryForRemainingPlayers, function(err, players) {
-                    seasonsTeamsPlayers.remainingPlayers = players;
+                    seasonsTeamsPlayers.remainingPlayers = players[0];
                 });
                 response["body"] = seasonsTeamsPlayers;
                 connection.end(function(err) {
