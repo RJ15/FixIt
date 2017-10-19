@@ -26,7 +26,7 @@ exports.handler = (event, context, callback) => {
         } else { 
             console.log('MySQL Connection obtained');
             var sqlInsertQuery = "Call insertToAuctionFeed("+ connection.escape(event.seasonId) +", "+ connection.escape(event.teamId) +", "+ connection.escape(event.playerId) +", "+ connection.escape(event.bidType) +", "+ connection.escape(event.bidValue) +")";
-            var sqlInsertSeasons = "Call insertToSeasonTeamPlayers("+ connection.escape(event.seasonId) +", "+ connection.escape(event.teamId) +", "+ connection.escape(event.playerId) +", "+ connection.escape(event.bidValue) + ")";
+            var sqlInsertSeasons = "Call updateToSeasonTeamPlayers("+ connection.escape(event.seasonId) +", "+ connection.escape(event.teamId) +", "+ connection.escape(event.playerId) +", "+ connection.escape(event.bidValue) + ")";
             connection.query(sqlInsertQuery, function(err, rows) {
                 var result = "inserted into auction feed";
                 if (event.bidType == 'WINNING-BID') {

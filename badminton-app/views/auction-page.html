@@ -193,8 +193,8 @@
 
         <!--Player name,pic and current bid value-->
         <div class="col-md-6 col-sm-6">
-            <h2>{{remainingPlayers[0].name}}</h2>
-            <img class="current-bid-img" alt="image" ng-src="{{remainingPlayers[0].profile_picture}}">
+            <h2>{{currentPlayerBidding.name}}</h2>
+            <img class="current-bid-img" alt="image" ng-src="{{currentPlayerBidding.profilePic}}">
             <h4 class="mt25">Current BID</h4>
             <h3 class="m0"> &#8377;{{bidPrice | number}}</h3>
             <h3 ng-if="message">"You have exceeded the bidding range. So start from beginning!!!"</h3>
@@ -216,15 +216,15 @@
                         </tr> -->
                         <tr>
                             <td>Played</td>
-                            <td>{{remainingPlayers[0].played}}</td>
+                            <td>{{currentPlayerBidding.played}}</td>
                         </tr>
                         <tr>
                             <td>Won</td>
-                            <td>{{remainingPlayers[0].won}}</td>
+                            <td>{{currentPlayerBiddingwon}}</td>
                         </tr>
                         <tr>
                             <td>Lost</td>
-                            <td>{{remainingPlayers[0].lost}}</td>
+                            <td>{{currentPlayerBiddinglost}}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -60,7 +60,28 @@ angular.module('badminton').controller('auctionPageController', function ($scope
         
     });
 
+    $scope.insertCurrentlyBiddingPlayer = function (data) {
+        var payload = {
+            "seasonId": $scope.seasons.seasonId,
+            "playerId": data[0].id,
+            "bidStatus": "BIDDING"
+        }
+        $bidding.insertCurrentBiddingPlayer(payload).then(function (response){
+            $scope.startSpin();
+            if (response.statusCode) {
+                $scope.stopSpin();
+                $scope.getSeasons();
+            }
+            else {
+                error("invalid current player");
+                $scope.stopSpin();
+            }
+        }, function (error) {
+            alert("error while fetching current player for bidding");
+            $scope.stopSpin();
 
+        })
+    }
     
 
     $scope.bidBySmashDroppers = function () {
@@ -265,6 +286,17 @@ angular.module('badminton').controller('auctionPageController', function ($scope
                         } 
                         $scope.remainingPlayers[i] = remainingPlayer;
                     }
+                    $bidding.getCurrentPlayerForBidding().then(function (response) {
+                        if (response.statusCode) {
+                            if(response.body != undefined) {
+                                $scope.currentPlayerBidding = response.body;
+                            }
+                            else
+                            {
+                                $scope.insertCurrentlyBiddingPlayer($scope.remainingPlayers);
+                            }
+                        }
+                    })
                 }
                 $scope.stopSpin();
             }
