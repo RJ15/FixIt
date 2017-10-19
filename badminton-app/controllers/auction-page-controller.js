@@ -100,7 +100,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
         var payload = {
                 "seasonId": $scope.seasons.seasonId,
                 "teamId":$scope.teams[1].teamId,
-                "playerId": $scope.remainingPlayers[0].id,
+                "playerId": $scope.currentPlayerBidding.id,
                 "bidType": "BID",
                 "bidValue": $scope.bidPrice
 
@@ -127,7 +127,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
         var payload = {
                 "seasonId": $scope.seasons.seasonId,
                 "teamId":$scope.bidBy,
-                "playerId": $scope.remainingPlayers[0].id,
+                "playerId": $scope.currentPlayerBidding.id,
                 "bidType": "WINNING-BID",
                 "bidValue": $scope.bidPrice
 
@@ -138,6 +138,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             if (response) {
                 alert("bid won");
                 $scope.stopSpin();
+                $scope.currentPlayerBidding = {};
                 $scope.refresh();
                 $scope.getSeasons();
                 $scope.bidPrice = 0;
@@ -175,7 +176,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
         var payload = {
                 "seasonId": $scope.seasons.seasonId,
                 "teamId":$scope.teams[0].teamId,
-                "playerId": $scope.remainingPlayers[0].id,
+                "playerId": $scope.currentPlayerBidding.id,
                 "bidType": "BID",
                 "bidValue": $scope.bidPrice
 
