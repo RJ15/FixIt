@@ -246,7 +246,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
 
     }
     
-    $scope.getSeasons = function(){
+    $scope.getSeasons = function() {
         // $scope.getColor();
         $game.getSeasonsTeamsPlayers().then(function (response) {
             $scope.startSpin();
@@ -273,7 +273,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
                 }
                 
                 $scope.remainingPlayers = $scope.seasons.remainingPlayers;
-                if ($scope.remainingPlayers.length >0) {
+                if ($scope.remainingPlayers.length >0 || $scope.currentPlayerBidding.length == undefined) {
                     
                     for (var i = 0; i < $scope.remainingPlayers.length; i++) {
                         var remainingPlayer = $scope.remainingPlayers[i];

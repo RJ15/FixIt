@@ -138,7 +138,7 @@
 
 
 
-<div class="col-md-12 col-sm-12 bg-white ptb-10" ng-if="remainingPlayers.length >0">
+<div class="col-md-12 col-sm-12 bg-white ptb-10">
     <!--bid board heading-->
     <h2 class="ml15 pb10 bb2"> Bid board </h2>
     <!--division for budget-->
@@ -171,7 +171,7 @@
     </div>
 
     <!--teams bid action division-->
-    <div class="col-md-3 col-sm-6">
+    <div class="col-md-3 col-sm-6" ng-if="typeof(currentPlayerBidding) != undefined">
 
         <!--team name-->
         <h2>BullDozers</h2>
@@ -189,7 +189,7 @@
     </div>
 
     <!--current bid division-->
-    <div class="col-md-6 bl2 br2">
+    <div class="col-md-6 bl2 br2" ng-if="typeof(currentPlayerBidding) != undefined">
 
         <!--Player name,pic and current bid value-->
         <div class="col-md-6 col-sm-6">
@@ -235,7 +235,7 @@
     </div>
 
     <!--team2 division-->
-    <div class="col-md-3 col-sm-6">
+    <div class="col-md-3 col-sm-6" ng-if="typeof(currentPlayerBidding) != undefined">
 
         <!--team name-->
         <h2>SmashDroppers</h2>
@@ -246,7 +246,7 @@
         </center>
     </div>
 </div>
-<div class="col-md-12 textAlign bg-white" ng-if="remainingPlayers.length == 0">
+<div class="col-md-12 textAlign bg-white" ng-if="typeof(currentPlayerBidding) == undefined">
    <h2>No Players available for bidding!!!<h2>
 </div>
 
@@ -256,7 +256,7 @@
 
 <!--live feed and remaining players division-->
 
-<div class="col-md-12 bg-white" ng-if="remainingPlayers.length != 0">
+<div class="col-md-12 bg-white" ng-if="typeof(currentPlayerBidding) == undefined">
 
     <!--live feed division-->
     <div class="col-md-6 bt2">
@@ -295,7 +295,7 @@
         </div>
 
         <!--looping remaining players array and dont display first element-->
-         <div ng-repeat="player in remainingPlayers" class="inline-display" ng-if="$index!=0">
+         <div ng-repeat="player in remainingPlayers" class="inline-display">
                 <img class="remaining-player-image mb20 border-2" alt="user" ng-src="{{player.profile_picture}}" />
         </div>
 
