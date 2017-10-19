@@ -33,7 +33,6 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     //     }, 1000);
     // };
 
-
     $scope.startSpin = function () {
         usSpinnerService.spin('spinner-1');
     }
@@ -273,7 +272,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
                 }
                 
                 $scope.remainingPlayers = $scope.seasons.remainingPlayers;
-                if ($scope.remainingPlayers.length >0 || $scope.currentPlayerBidding.length == undefined) {
+                if ($scope.remainingPlayers.length >0 || $scope.currentPlayerBidding != undefined) {
                     
                     for (var i = 0; i < $scope.remainingPlayers.length; i++) {
                         var remainingPlayer = $scope.remainingPlayers[i];
@@ -311,6 +310,14 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             $scope.stopSpin();
 
         })
+    }
+
+    $scope.isEmpty = function (currentPlayer) {
+        if(currentPlayer == undefined) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     $scope.gotoHome = function () {
