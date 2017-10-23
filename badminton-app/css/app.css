@@ -1,8 +1,16 @@
 body {
     width: 75%;
     margin: auto;
-    background-color: #e1e1e1;
+    background-color: #212121;
 }
+
+.bpl-image {
+        width: 700px;
+        height: 311px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
 @media only screen and (max-width: 500px) {
     body {
@@ -35,7 +43,15 @@ body {
 }
 
 .fs-18 {
-    font-size: 18px;
+    font-size: 25px;
+    font-family: Helvetica;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.fs-18 > li > img{
+    width: 150px;
+    height: 50px;
 }
 
 .panel1 {
