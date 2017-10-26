@@ -1,6 +1,12 @@
 body {
     width: 75%;
     margin: auto;
+    background-color: #e1e1e1;
+}
+
+.loginscreen{
+    width: 75%;
+    margin: auto;
     background-color: #212121;
 }
 
