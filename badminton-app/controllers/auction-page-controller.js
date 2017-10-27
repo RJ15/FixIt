@@ -320,14 +320,17 @@ angular.module('badminton').controller('auctionPageController', function ($scope
         }
     }
 
-    $scope.gotoHome = function () {
+    $scope.gotoHome = function(){
         $state.go("homePage");
     }
-    $scope.gotoPlayers = function () {
+    $scope.gotoPlayers = function(){
         $state.go("playersPage");
     }
-    $scope.gotoAuction = function () {
+    $scope.gotoAuction = function(){
         $state.go("auctionPage");
+    }
+    $scope.gotoFixtures = function(){
+        $state.go("fixturesPage");
     }
 
 })

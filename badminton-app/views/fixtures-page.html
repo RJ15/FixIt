@@ -1,0 +1,41 @@
+<header></header>
+<div class="col-md-12 col-sm-12 change-height" style="background-color: white;">
+<div class="col-md-12 ">
+    <h1>Fix-It, Buddy!</h1>
+    <p>Generate well-distributed, random team pairings for a tournament..</p>
+    <p>But hey, does it matter?? Anyway, its going to be Bulldozers all the way!!</p>
+    <p>
+        <a class="btn btn-primary btn-lg" role="button" ng-click="generateAndRenderNewGame()">Generate &raquo;</a>
+    </p>
+</div>
+
+<div class="col-md-12">
+         <div class="col-md-4 col-xs-12 " ng-repeat="game in games">
+                <h5>Game {{game.matchNumber}}</h5>
+                <table>
+                  <tr>
+                    <th style="padding-bottom: 0px;"><b>{{game.teams[0].name}}</b></th>
+                    <th style="padding-bottom: 0px;"><b>{{game.teams[1].name}}</b></th>
+                  </tr>
+                  <tr>
+                    
+                    <td>
+                      <ul>
+                      
+                      <li>{{game.teams[0].players[0]}}</li>
+                      <li>{{game.teams[0].players[1]}}</li>
+                      
+                      </ul>
+                    </td>
+                    <td>
+                      <ul>
+                      
+                      <li>{{game.teams[1].players[0]}}</li>
+                      <li>{{game.teams[1].players[1]}}</li>
+                      
+                      </ul>
+                    </td>
+                  </tr>
+                </table>
+        </div> 
+</div>

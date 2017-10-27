@@ -54,5 +54,8 @@ angular.module('badminton').controller('playersPageController', function ($scope
     $scope.gotoAuction = function(){
         $state.go("auctionPage");
     }
+    $scope.gotoFixtures = function(){
+        $state.go("fixturesPage");
+    }
 	
 })
