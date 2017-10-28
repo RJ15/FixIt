@@ -1,20 +1,4 @@
-
-
-.loginscreen{
-    width: 75%;
-    margin: auto;
-    background-color: #212121;
-}
-
-.bpl-image {
-        width: 700px;
-        height: 311px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 520px) {
     body {
         width: 100%;
         overflow-x: hidden;
@@ -38,6 +22,15 @@
     .login {
         width: 100%;
     }
+    .loginscreen {
+        width: 100%;
+        margin: auto;
+        padding-bottom: 10px;
+        background-color: #212121;
+    }
+    .bpl-image {
+        width: 100%;
+    }
 }
 
 .inline-display {
@@ -51,7 +44,7 @@
     font-weight: bold;
 }
 
-.fs-18 > li > img{
+.fs-18 > li > img {
     width: 150px;
     height: 50px;
 }
@@ -117,14 +110,27 @@
     .bg-white {
         background-color: white;
     }
+    .bpl-image {
+        width: 700px;
+        height: 230px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .loginscreen {
+        width: 75%;
+        margin: auto;
+        padding-bottom: 10px;
+        background-color: #212121;
+    }
+    
 }
-
-
 
 .mb30 {
     margin-bottom: 30px;
 }
-.mt30{
+
+.mt30 {
     margin-top: 30px;
 }
 
@@ -198,33 +204,42 @@
     border: 2px solid #030303;
 }
 
-.ml40{
+.ml40 {
     margin-left: 40px;
 }
-.width-30{
+
+.width-30 {
     width: 30%;
 }
-.bt2{
+
+.bt2 {
     border-top: 2px solid #ecebeb;
 }
-.mt20{
+
+.mt20 {
     margin-top: 20px;
 }
-.mb10{
+
+.mb10 {
     margin-bottom: 10px;
 }
-.pointer-cursor{
+
+.pointer-cursor {
     cursor: pointer;
 }
-.fs16{
+
+.fs16 {
     font-size: 16px;
 }
-.mb20{
+
+.mb20 {
     margin-bottom: 20px;
 }
-.ml20{
+
+.ml20 {
     margin-left: 20px;
 }
-.border-2{
-    border:2px solid #030303;
+
+.border-2 {
+    border: 2px solid #030303;
 }
