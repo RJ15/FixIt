@@ -1,3 +1,4 @@
+/* mobile screen styles */
 @media only screen and (max-width: 520px) {
     body {
         width: 100%;
@@ -31,31 +32,34 @@
     .bpl-image {
         width: 100%;
     }
+    .player-image {
+        width: 125px;
+        height: 125px;
+        border-radius: 50%;
+    }
+    .remaining-player-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    .team-image {
+        width: 325px;
+        height: 200px;
+    }
+    .live-player-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+    .plr0{
+        padding-left: 0px;
+        padding-right: 0px;
+
+    }
 }
 
-.inline-display {
-    display: inline;
-}
 
-.fs-18 {
-    font-size: 25px;
-    font-family: Helvetica;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.fs-18 > li > img {
-    width: 150px;
-    height: 50px;
-}
-
-.panel1 {
-    margin-bottom: 20px;
-    background-color: #fff;
-    border-radius: 4px;
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-}
+/* desktop screen styles */
 
 @media only screen and (min-width: 600px) {
     body {
@@ -75,21 +79,8 @@
         height: 125px;
         border-radius: 50%;
     }
-    .redColor {
-        background-color: #E01111;
-    }
-    .cyanColor {
-        background-color: #03CCEC;
-    }
-    .orangeColor {
-        background-color: #F6BC16;
-    }
-    .greenColor {
-        background-color: #12D818;
-    }
-    .textAlign {
-        text-align: center;
-    }
+    
+    
     .live-player-image {
         width: 50px;
         height: 50px;
@@ -125,6 +116,50 @@
     }
     
 }
+
+
+
+/* common style block */
+
+.textAlign {
+    text-align: center;
+}
+.redColor {
+    background-color: #E01111;
+}
+.cyanColor {
+    background-color: #03CCEC;
+}
+.orangeColor {
+    background-color: #F6BC16;
+}
+.greenColor {
+    background-color: #12D818;
+}
+.inline-display {
+    display: inline;
+}
+
+.fs-18 {
+    font-size: 25px;
+    font-family: Helvetica;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.fs-18 > li > img {
+    width: 150px;
+    height: 50px;
+}
+
+.panel1 {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
 
 .mb30 {
     margin-bottom: 30px;

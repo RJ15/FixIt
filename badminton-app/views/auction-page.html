@@ -4,25 +4,25 @@
 <button ng-click="stopSpin()">Stop spinner</button> -->
 
 <span us-spinner spinner-key="spinner-1"></span>
-<div class="col-md-12 bg-white">
+<div class="col-md-12 bg-white plr0">
 
     <!--1st team-->
-    <div class="col-md-6 col-sm-12"><br/><br/>
+    <div class="col-md-6 col-sm-12 plr0"><br/><br/>
         <div class="panel1">
         <!--team name division-->
-        <div class="col-md-12">
+        <div class="col-md-12 col-sm-12">
             <div class="inline-display">
                 <img alt="Team1" class="team-image" src="img/BullDozers.jpg">
                 <h1>{{teams[0].teamName}}</h1>
             </div>
         </div>
          <!--team description division-->
-        <div class="col-md-12">
+        <div class="col-md-12 col-sm-12">
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book.
         </div>
          <!--team stats division-->
-         <div class="col-md-12">
+         <div class="col-md-12 col-sm-12">
                 <h2>Stats</h2>
                 <table class="table table-striped table-bordered col-md-6">
                     <thead>
@@ -52,9 +52,9 @@
                 </table>
         </div>
          <!--players division-->
-        <div class="col-md-12">
+        <div class="col-md-12 col-sm-12">
             <h2>Players</h2>
-            <div class="col-md-4 mb30" ng-repeat="player in teams[0].players">
+            <div class="col-md-4 col-sm-3 mb30" ng-repeat="player in teams[0].players">
                 <center>
                     <img class="player-image img-border" alt="user" ng-src="{{player.profilePic}}" />
                 </center>
@@ -70,24 +70,24 @@
     </div>
 
     <!--2nd team-->
-    <div class="col-md-6 col-sm-12 bg-white"><br/><br/>
+    <div class="col-md-6 col-sm-12 bg-white plr0"><br/><br/>
         <div class="panel1">
             <!--division for team name -->
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12">
                 <div class="inline-display">
                     <img alt="Team1" class="team-image" src="img/SmashDroppers.jpg">
                     <h1>{{teams[1].teamName}}</h1>
                 </div>
             </div>
             <!--division for team description -->
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12">
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
                 and scrambled it to make a type specimen book.
             </div>
             <!--division for team stats -->
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12">
                 <h2>Stats</h2>
-                <table class="table table-striped table-bordered col-md-6">
+                <table class="table table-striped table-bordered col-md-6 col-sm-8">
                     <thead>
                         <tr>
                             <th>Metric</th>
@@ -115,9 +115,9 @@
                 </table>
             </div>
             <!--division for players-->
-           <div class="col-md-12">
+           <div class="col-md-12 col-sm-12">
                <h2>Players</h2>
-                <div class="col-md-4 mb30" ng-repeat="player in teams[1].players">
+                <div class="col-md-4 col-sm-4 mb30" ng-repeat="player in teams[1].players">
                         <center>
                             <img class="player-image" style="border:2px solid #030303;" alt="user" ng-src="{{player.profilePic}}" />
                         </center>
