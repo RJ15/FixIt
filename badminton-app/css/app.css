@@ -57,6 +57,9 @@
         padding-right: 0px;
 
     }
+    ul{
+        padding: 0px;
+    }
 }
 
 
@@ -115,13 +118,30 @@
         padding-bottom: 10px;
         background-color: #212121;
     }
+    ul{
+        padding: 12px;
+        list-style-type: none;
+    }
+    .card {
+        /* Add shadows to create the "card" effect */
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        margin-left: 40px;
+        margin-bottom: 40px;
+    
+    }
     
 }
 
 
 
+
 /* common style block */
 
+
+ul{
+    list-style-type: none;
+}
 .textAlign {
     text-align: center;
 }
@@ -278,4 +298,27 @@
 
 .border-2 {
     border: 2px solid #030303;
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-bottom: 40px;
+
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+    padding: 2px 16px;
+    width:100%;
+}
+
+.bold{
+    font-weight: bold;
 }

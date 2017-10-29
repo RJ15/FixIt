@@ -1,5 +1,5 @@
 <header></header>
-<div class="col-md-12 col-sm-12 change-height" style="background-color: white;">
+<div class="col-md-12 col-sm-12 " style="background-color: white;height:auto;padding-bottom:10px;">
 <div class="col-md-12 ">
     <h1>Fix-It, Buddy!</h1>
     <p>Generate well-distributed, random team pairings for a tournament..</p>
@@ -9,33 +9,35 @@
     </p>
 </div>
 
-<div class="col-md-12">
-         <div class="col-md-4 col-xs-12 " ng-repeat="game in games">
-                <h5>Game {{game.matchNumber}}</h5>
-                <table>
+<div class="col-md-12 col-xs-12">
+         <div class="col-md-5 col-xs-12 card " ng-repeat="game in games">
+            <div class="container">
+                <h3>Game {{game.matchNumber}}</h3>
+                <table class="col-md-12 col-xs-12">
                   <tr>
-                    <th style="padding-bottom: 0px;"><b>{{game.teams[0].name}}</b></th>
-                    <th style="padding-bottom: 0px;"><b>{{game.teams[1].name}}</b></th>
+                    <th style="width:100%;"><h4><i class="bold">{{game.teams[0].name}}</i></h4></th>
+                    <th style="width:100%;"><h4><i class="bold">{{game.teams[1].name}}</i></h4></th>
                   </tr>
                   <tr>
                     
                     <td>
                       <ul>
                       
-                      <li>{{game.teams[0].players[0]}}</li>
-                      <li>{{game.teams[0].players[1]}}</li>
+                      <li style="margin-bottom: 10px;">{{game.teams[0].players[0]}}</li>
+                      <li >{{game.teams[0].players[1]}}</li>
                       
                       </ul>
                     </td>
                     <td>
                       <ul>
                       
-                      <li>{{game.teams[1].players[0]}}</li>
-                      <li>{{game.teams[1].players[1]}}</li>
+                      <li style="margin-bottom: 10px;">{{game.teams[1].players[0]}}</li>
+                      <li >{{game.teams[1].players[1]}}</li>
                       
                       </ul>
                     </td>
                   </tr>
                 </table>
         </div> 
+        </div>
 </div>
