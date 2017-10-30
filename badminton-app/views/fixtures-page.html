@@ -4,6 +4,41 @@
     <h1>Fix-It, Buddy!</h1>
     <p>Generate well-distributed, random team pairings for a tournament..</p>
     <p>But hey, does it matter?? Anyway, its going to be Bulldozers all the way!!</p>
+    <div class="col-md-12 mb30">
+        <div class="col-md-6 mb30">
+          <table class="table-striped table-bordered col-md-10">
+            <tr>
+                <th></th>
+                <th style="padding:10px;">
+                  Bulldozers
+                </th>
+            </tr>
+            <tr ng-repeat="player in teams[0].players">
+                <td class="t-padding" style="width:10%;"><input style="zoom:2;" type="checkbox" name="player" checked></td>
+                <td style="padding:10px;">
+                  {{player}}
+                </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table-striped table-bordered col-md-10">
+                <tr>
+                    <th></th>
+                    <th style="padding:10px;">
+                      SmashDroppers
+                    </th>
+                </tr>
+                <tr ng-repeat="player in teams[1].players">
+                    <td class="t-padding" style="width:10%;"><input style="zoom:2;" type="checkbox" name="player" checked></td>
+                    <td style="padding:10px;">
+                      {{player}}
+                    </td>
+                </tr>
+              </table>
+
+        </div>
+    </div>
     <p>
         <a class="btn btn-primary btn-lg" role="button" ng-click="generateAndRenderNewGame()">Generate &raquo;</a>
     </p>

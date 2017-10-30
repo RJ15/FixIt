@@ -12,7 +12,7 @@ angular.module('badminton').controller('fixturesPageController', function ($scop
 
     // code fixtures
     
-    var teams = [
+    $scope.teams = [
         {
             name: "Bulldozers",
             players: [
@@ -35,6 +35,7 @@ angular.module('badminton').controller('fixturesPageController', function ($scop
         } 
     ];
     
+    var teams = $scope.teams;
 
     $scope.generateAndRenderNewGame = function() {
         // initialzieTeams1();
