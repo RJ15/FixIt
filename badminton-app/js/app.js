@@ -27,6 +27,12 @@ badmintonApp.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'playersPageController'
 
         })
+        .state('teamsPage', {
+            url: '/teams-page',
+            templateUrl: 'views/teams-page.html',
+            controller: 'teamsPageController'
+
+        })
         .state('fixturesPage', {
             url: '/fixtures-page',
             templateUrl: 'views/fixtures-page.html',

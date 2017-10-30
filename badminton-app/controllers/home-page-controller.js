@@ -37,5 +37,8 @@ angular.module('badminton').controller('homePageController', function ($scope, $
     $scope.gotoFixtures = function(){
         $state.go("fixturesPage");
     }
+    $scope.gotoTeams = function(){
+        $state.go("teamsPage");
+    }
 	
 })
