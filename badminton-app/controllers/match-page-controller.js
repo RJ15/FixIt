@@ -13,17 +13,20 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
     $scope.serveTeam = "";
     $scope.receiveTeam = "";
     $scope.courtDisable = false; 
+
     $scope.setActivePlayer = function(id){
         if(id == "playerA2"){
             if ($scope.teamApoints==0 && $scope.teamBpoints==0) {
                 $scope.activePlayer = $scope.playerA2;
                 $scope.serveTeam = "teamA";
                 $scope.receiveTeam = "teamB";
+                $(".activePlayer").removeClass('activePlayer');
                 $("#playerA2").addClass("activePlayer");
             }
         }else if(id == "playerB1"){
             if ($scope.teamApoints==0 && $scope.teamBpoints==0) {
                 $scope.activePlayer = $scope.playerB1;
+                $(".activePlayer").removeClass('activePlayer');
                 $("#playerB1").addClass("activePlayer");
                 $scope.serveTeam = "teamB";
                 $scope.receiveTeam = "teamA";
