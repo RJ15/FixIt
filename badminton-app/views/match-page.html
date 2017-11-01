@@ -1,0 +1,138 @@
+<header></header>
+<div class="col-md-12" style="background-color: white;height:auto;padding-bottom:10px;">
+
+    <!-- matches section -->
+    <div class="col-md-12" ng-if="!isPlay">
+        <h2>Match Points</h2>
+
+        <div class="match-flex">
+            <div class="team1-flex">
+                <h3>BullDozers</h3>
+            </div>
+            <div class="match-point-flex">
+                <h3 style="font-size:30px;">11 - 2</h3>
+            </div>
+            <div class="team2-flex">
+                <h3>SmashDroppers</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- games section -->
+    <div class="col-md-12" style="margin-top:40px;" ng-if="!isPlay">
+    <div class="col-md-5 col-xs-12 card " ng-class="getClass($index)" ng-repeat="game in games">
+        <div class="container">
+            <h3 style="display:inline-flex;">Game {{game.matchNumber}}</h3>
+            <a style="float: right;font-size: 24px;margin-top: 10px;" ng-click="play(game.matchNumber)">Play</a>
+            <table class="col-md-12 col-xs-12">
+                <tr>
+                    <th style="width:100%;">
+                        <h4>
+                            <i class="bold">{{game.teams[0].name}}</i>
+                        </h4>
+                    </th>
+                    <th style="width:100%;">
+                        <h4>
+                            <i class="bold">{{game.teams[1].name}}</i>
+                        </h4>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <ul>
+
+                            <li style="margin-bottom: 10px;">{{game.teams[0].players[0]}}</li>
+                            <li>{{game.teams[0].players[1]}}</li>
+
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+
+                            <li style="margin-bottom: 10px;">{{game.teams[1].players[0]}}</li>
+                            <li>{{game.teams[1].players[1]}}</li>
+
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </div>
+
+    <!-- play section -->
+    <div class="col-md-12" ng-if="isPlay" style="height:100%">
+            
+            <div class="court" style="margin-top:70px;" ng-disabled="{{courtDisable}} == 'true'">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div id="playerA1" class="player-box">
+                        <div style="margin-top: 50;"><b>{{playerA1}}</b></div>
+                        <div class="swap" style=" position: relative; top: 100px;left:-50px;" ng-if="!courtDisable">
+                            <button ng-if="!isStart" class="btn btn-primary " ng-click="swapA()">swap</button>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div id="playerB1" class="player-box" ng-click="setActivePlayer(teamBId)">
+                        <div style="margin-top: 50;"><b>{{playerB1}}</b></div>
+                        <div class="swap" style=" position: relative; top: 100px;left:-50px;" ng-if="!courtDisable">
+                                <button ng-if="!isStart" class="btn btn-primary " ng-click="swapB()">swap</button>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div id="playerA2" class="player-box" ng-click="setActivePlayer(teamAId)">
+                        <div style="margin-top: 50;"><b>{{playerA2}}</b></div>
+                    </div>
+                    <div id="playerB2" class="player-box">
+                        <div style="margin-top: 50;"><b>{{playerB2}}</b></div>
+                        
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="col-md-12" style="text-align:center;">
+                    <h4> {{teamApoints}} - {{teamBpoints}}</h4>
+                </div>
+                <div style="display: flex;flex-direction: column;position: absolute; top: 150px;width:12%;">
+                    <div style="padding:10px;">
+                        <button class="btn btn-primary" style="width:100%;" ng-click="teamApointsUpdate()"> smash</button>
+                    </div>
+                    
+                    <div style="padding:10px;">
+                        <button class="btn btn-primary" style="width:100%;" ng-click="teamApointsUpdate()"> drop</button>
+                    </div>
+                    <div style="padding:10px;">
+                        <button class="btn btn-primary" style="width:100%;" ng-click="teamApointsUpdate()"> placement</button>
+                    </div>
+                </div>
+                <div style="display: flex;flex-direction: column;position: absolute; top: 150px;right:0px;">
+
+                        <div style="padding:10px;">
+                            <button class="btn btn-primary" style="width:100%;" ng-click="teamBpointsUpdate()"> smash</button>
+                        </div>
+                        
+                        <div style="padding:10px;">
+                            <button class="btn btn-primary" style="width:100%;" ng-click="teamBpointsUpdate()"> drop</button>
+                        </div>
+                        <div style="padding:10px;">
+                            <button class="btn btn-primary" style="width:100%;" ng-click="teamBpointsUpdate()"> placement</button>
+                        </div>
+                </div>
+
+    </div>
+
+</div>
+</div>

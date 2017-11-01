@@ -13,10 +13,13 @@
                   Bulldozers
                 </th>
             </tr>
-            <tr ng-repeat="player in teams[0].players">
-                <td class="t-padding" style="width:10%;"><input style="zoom:2;" type="checkbox" name="player" checked></td>
+            <tr ng-repeat="player in teamsObj[0].players">
+                <td class="t-padding" style="width:10%;">
+                  <input style="zoom:2;" type="checkbox" ng-model="player.status"
+                  ng-change="filterTeam1(player.name, player.status)" name="player">
+                </td>
                 <td style="padding:10px;">
-                  {{player}}
+                  {{player.name}}
                 </td>
             </tr>
           </table>
@@ -29,17 +32,19 @@
                       SmashDroppers
                     </th>
                 </tr>
-                <tr ng-repeat="player in teams[1].players">
-                    <td class="t-padding" style="width:10%;"><input style="zoom:2;" type="checkbox" name="player" checked></td>
+                <tr ng-repeat="player in teamsObj[1].players">
+                    <td class="t-padding" style="width:10%;">
+                      <input style="zoom:2;" type="checkbox" ng-model="player.status"
+                       name="player" ng-change="filterTeam2(player.name, player.status)"></td>
                     <td style="padding:10px;">
-                      {{player}}
+                      {{player.name}}
                     </td>
                 </tr>
               </table>
 
         </div>
     </div>
-    <p>
+    <p style="margin-left: 30px; margin-bottom: 30px;">
         <a class="btn btn-primary btn-lg" role="button" ng-click="generateAndRenderNewGame()">Generate &raquo;</a>
     </p>
 </div>
@@ -75,4 +80,8 @@
                 </table>
         </div> 
         </div>
+
+        <p style="margin-right: 30px; margin-bottom: 30px;float:right;" ng-if="games">
+            <a class="btn btn-primary btn-lg" role="button" ng-click="finalize()">Finalize &raquo;</a>
+        </p>
 </div>

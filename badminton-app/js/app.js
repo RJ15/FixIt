@@ -1,4 +1,4 @@
-var badmintonApp = angular.module('badminton', ['ui.router', 'angularBootstrapMaterial', 'ui.bootstrap','angularSpinner']);
+var badmintonApp = angular.module('badminton', ['ui.router', 'angularBootstrapMaterial', 'ui.bootstrap','angularSpinner','ngStorage']);
 
 badmintonApp.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -39,6 +39,13 @@ badmintonApp.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'fixturesPageController'
 
         })
+        .state('matchPage', {
+            url: '/match-page',
+            templateUrl: 'views/match-page.html',
+            controller: 'matchPageController'
+
+        })
+        
         
     $urlRouterProvider.otherwise('/login-page');
 })

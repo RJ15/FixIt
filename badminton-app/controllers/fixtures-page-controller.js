@@ -1,4 +1,4 @@
-angular.module('badminton').controller('fixturesPageController', function ($scope, $rootScope, $state, $uibModal,$stateParams,$login,usSpinnerService) {
+angular.module('badminton').controller('fixturesPageController', function ($scope, $rootScope, $state, $uibModal,$stateParams,$login,usSpinnerService,$localStorage) {
     'use strict'
    
     $scope.startSpin = function () {
@@ -7,6 +7,7 @@ angular.module('badminton').controller('fixturesPageController', function ($scop
     $scope.stopSpin = function () {
         usSpinnerService.stop('spinner-1');
     }
+    
 
 
 
@@ -36,16 +37,87 @@ angular.module('badminton').controller('fixturesPageController', function ($scop
     ];
     
     var teams = $scope.teams;
+    $scope.teamsObj = [
+        {
+            name: "Bulldozers",
+            players: [
+                {
+                    name: "Rajath",
+                    status: true
+                },
+                {
+                    name: "Supreet",
+                    status: true
+                },
+                {
+                    name: "Kruthika",
+                    status: true
+                },
+                {
+                    name: "Manasa",
+                    status: true
+                },
+                {
+                    name: "Keerthan",
+                    status: true
+                }]
+        },
+        {
+            name: "SmashDroppers",
+            players: [
+                {
+                    name: "Anil",
+                    status: true
+                },
+                {
+                    name: "Keshav",
+                    status: true
+                },
+                {
+                    name: "Shivaraj",
+                    status: true
+                },
+                {
+                    name: "Vani",
+                    status: true
+                },
+                {
+                    name: "Ram",
+                    status: true
+                }]
+        } 
+    ];
+    $scope.filterTeam1= function(name, status){
+        if(status){
+            teams[0].players.push(name);
+        }else {
+            var index = teams[0].players.indexOf(name);
+            teams[0].players.splice(index, 1);
+        }
 
+    }
+    $scope.filterTeam2= function(name, status){
+        if(status){
+            teams[1].players.push(name);
+        }else {
+            var index = teams[1].players.indexOf(name);
+            teams[1].players.splice(index, 1);
+        }
+
+    }
     $scope.generateAndRenderNewGame = function() {
         // initialzieTeams1();
         var numberofPlayersPerTeam = teams[0].players.length;
         var totalGames = getNumberOfGames(numberofPlayersPerTeam);
         var maxGamesPerPlayer = numberofPlayersPerTeam - 1;
         $scope.games = generate(totalGames, maxGamesPerPlayer);
+        
        
     }
-    
+    $scope.finalize = function(){
+        $localStorage.games = $scope.games;
+        $state.go("matchPage")
+    }
     var getRandomPlayer = function(team) {
         return team ? team.players[Math.floor(Math.random()*100)%team.players.length] : undefined;
     }

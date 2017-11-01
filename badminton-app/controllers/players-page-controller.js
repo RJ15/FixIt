@@ -84,3 +84,4 @@ angular.module('badminton').controller('playersPageController', function ($scope
     }
 	
 })
+    
