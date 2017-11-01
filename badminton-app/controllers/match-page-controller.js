@@ -8,6 +8,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
     $scope.teamApoints = 0;
     $scope.isStart = false;
     $scope.activePlayer = null;
+    $scope.undoDisable = false;
     $scope.teamAId = "playerA2";
     $scope.teamBId = "playerB1";
     $scope.serveTeam = "";
@@ -74,7 +75,9 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
         $scope.teamApoints = $scope.gameTrack[len].teamApoints;
         $scope.teamBpoints = $scope.gameTrack[len].teamBpoints;
         
-        
+        if (len == 0) {
+            $scope.undoDisable = true;
+        }
         $(".activePlayer").removeClass('activePlayer');
         $(activeId).addClass("activePlayer");
     }
@@ -134,7 +137,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
         $scope.teamApoints = $scope.teamApoints + 1;
         $scope.activePlayerId = $(".activePlayer").attr('id');
-
+        $scope.undoDisable = false;
         $scope.gameTrack.push({
             teamApoints: $scope.teamApoints,
             teamBpoints: $scope.teamBpoints,
@@ -180,7 +183,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
         $scope.teamBpoints = $scope.teamBpoints + 1;
         $scope.activePlayerId = $(".activePlayer").attr('id');
-
+        $scope.undoDisable = false;
         $scope.gameTrack.push({
             teamApoints: $scope.teamApoints,
             teamBpoints: $scope.teamBpoints,
