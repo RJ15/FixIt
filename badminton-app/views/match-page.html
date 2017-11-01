@@ -104,7 +104,7 @@
                     <div></div>
                 </div>
                 <div class="col-md-12" style="text-align:center;">
-                    <h4> {{teamApoints}} - {{teamBpoints}}</h4>
+                    <h4> {{gameTrack[gameTrack.length -1].teamApoints}} - {{gameTrack[gameTrack.length -1].teamBpoints}}</h4>
                 </div>
                 <div style="display: flex;flex-direction: column;position: absolute; top: 150px;width:12%;">
                     <div style="padding:10px;">
@@ -130,6 +130,10 @@
                         <div style="padding:10px;">
                             <button class="btn btn-primary" style="width:100%;" ng-click="teamBpointsUpdate()"> placement</button>
                         </div>
+
+                </div>
+                <div style="float:right;" ng-if="courtDisable">
+                        <button class="btn btn-primary" style="width:100%;" ng-click="undo()"> Undo</button>
                 </div>
 
     </div>
