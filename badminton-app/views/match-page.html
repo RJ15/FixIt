@@ -74,16 +74,16 @@
                     <div></div>
                     <div id="playerA1" class="player-box">
                         <div style="margin-top: 50;"><b>{{playerA1}}</b></div>
-                        <div class="swap" style=" position: relative; top: 100px;left:-50px;" ng-if="!courtDisable">
-                            <button ng-if="!isStart" class="btn btn-primary " ng-click="swapA()">swap</button>
+                        <div class="swap" style=" position: relative; top: 100px;right:35px;height:25px;" ng-if="!courtDisable">
+                            <button ng-if="!isStart" class="btn btn-primary btn-icon" ng-click="swapA()">&lt;      &gt;</button>
                         </div>
                     </div>
                     <div></div>
                     <div></div>
                     <div id="playerB1" class="player-box" ng-click="setActivePlayer(teamBId)">
                         <div style="margin-top: 50;"><b>{{playerB1}}</b></div>
-                        <div class="swap" style=" position: relative; top: 100px;left:-50px;" ng-if="!courtDisable">
-                                <button ng-if="!isStart" class="btn btn-primary " ng-click="swapB()">swap</button>
+                        <div class="swap" style=" position: relative; top: 100px;right:10px;height:25px;" ng-if="!courtDisable">
+                                <button ng-if="!isStart" class="btn btn-primary btn-icon" ng-click="swapB()">&lt;      &gt;</button>
                         </div>
                     </div>
                     <div></div>

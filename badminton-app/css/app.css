@@ -443,3 +443,10 @@ input[type="checkbox"] {
     justify-content: center;
 }
 
+.btn-icon {
+    display: flex;
+    justify-content: center;
+    transform: rotate(90deg);
+    width: 25px;
+}
+

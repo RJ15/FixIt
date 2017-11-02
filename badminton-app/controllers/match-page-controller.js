@@ -77,6 +77,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
         
         if (len == 0) {
             $scope.undoDisable = true;
+            $scope.courtDisable = false;
         }
         $(".activePlayer").removeClass('activePlayer');
         $(activeId).addClass("activePlayer");
