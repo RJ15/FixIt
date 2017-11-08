@@ -63,50 +63,120 @@
 
     <!-- play section -->
     <div class="col-md-12" ng-if="isPlay" style="height:100%">
+            <div id="bubble" ng-if="isCoordinateSelected"></div>
             
-            <div class="court" style="margin-top:70px;" ng-disabled="{{courtDisable}} == 'true'">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div id="playerA1" class="player-box">
+            <div class="court" style="margin-top:70px;" ng-click="getCourtCoordinates();" ng-disabled="{{courtDisable}} == 'true'">
+                    <div class="boxA"></div>
+                    <div class="boxA">
+                        <div style="display:inline-flex;justify-content: space-around;width:100%;"  ng-if="!isScoreSelected">
+                            <div style="padding:1px;" >
+                                <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamApointsUpdate();">S</button>
+                            </div>
+                            
+                            <div style="padding:1px;">
+                                <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()">D</button>
+                            </div>
+                            <div style="padding:1px;">
+                                <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()"> P</button>
+                            </div>
+                            <div style="padding:1px;">
+                                <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()"> E</button>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <div class="boxA"></div>
+                    <div class="boxB"></div>
+                    <div class="boxB">
+                        <div style="display:inline-flex;justify-content:space-between;width:100%;" ng-if="!isScoreSelected">
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()">S</button>
+                        </div>
+                        
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()">D</button>
+                        </div>
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()"> P</button>
+                        </div>
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()"> E</button>
+                        </div>
+                        </div>
+
+                    </div>
+                    <div class="boxB"></div>
+                    <div class="boxA"></div>
+                    <div id="playerA1" class="player-box boxA">
                         <div style="margin-top: 50;"><b>{{playerA1}}</b></div>
                         <div class="swap" style=" position: relative; top: 100px;right:35px;height:25px;" ng-if="!courtDisable">
-                            <button ng-if="!isStart" class="btn btn-primary btn-icon" ng-click="swapA()">&lt;      &gt;</button>
+                            <button ng-if="!isStart" class="btn btn-primary btn-icon" ng-click="$event.stopPropagation();swapA()">&lt;      &gt;</button>
                         </div>
                     </div>
-                    <div></div>
-                    <div></div>
-                    <div id="playerB1" class="player-box" ng-click="setActivePlayer(teamBId)">
+                    <div class="boxA"></div>
+                    <div class="boxB"></div>
+                    <div id="playerB1" class="player-box boxB" ng-click="setActivePlayer(teamBId)">
                         <div style="margin-top: 50;"><b>{{playerB1}}</b></div>
                         <div class="swap" style=" position: relative; top: 100px;right:10px;height:25px;" ng-if="!courtDisable">
-                                <button ng-if="!isStart" class="btn btn-primary btn-icon" ng-click="swapB()">&lt;      &gt;</button>
+                                <button ng-if="!isStart" class="btn btn-primary btn-icon" ng-click="$event.stopPropagation();swapB()">&lt;      &gt;</button>
                         </div>
                     </div>
-                    <div></div>
-                    <div></div>
-                    <div id="playerA2" class="player-box" ng-click="setActivePlayer(teamAId)">
+                    <div class="boxB"></div>
+                    <div class="boxA"></div>
+                    <div id="playerA2" class="player-box boxA" ng-click="setActivePlayer(teamAId)">
                         <div style="margin-top: 50;"><b>{{playerA2}}</b></div>
                     </div>
-                    <div id="playerB2" class="player-box">
+                    <div id="playerB2" class="player-box boxB">
                         <div style="margin-top: 50;"><b>{{playerB2}}</b></div>
                         
                     </div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div class="boxB"></div>
+                    <div class="boxA"></div>
+                    <div class="boxA">
+                        <div style="display:inline-flex;justify-content: space-around;width:100%;" ng-if="!isScoreSelected">
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()">S</button>
+                        </div>
+                        
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()">D</button>
+                        </div>
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()"> P</button>
+                        </div>
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()"> E</button>
+                        </div>
+                        </div>
+                       
+
+                        
+                    </div>
+                    <div class="boxA"></div>
+                    <div class="boxB"></div>
+                    <div class="boxB">
+                        <div  style="display:inline-flex;justify-content:space-between;width:100%;" ng-if="!isScoreSelected">
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()">S</button>
+                        </div>
+                        
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()">D</button>
+                        </div>
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()"> P</button>
+                        </div>
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()"> E</button>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="boxB"></div>
                 </div>
                 <div class="col-md-12" style="text-align:center;">
                     <h4> {{gameTrack[gameTrack.length -1].teamApoints}} - {{gameTrack[gameTrack.length -1].teamBpoints}}</h4>
                 </div>
-                <div style="display: flex;flex-direction: column;position: absolute; top: 150px;width:12%;">
+                <!-- <div style="display: flex;flex-direction: column;position: absolute; top: 150px;width:12%;">
                     <div style="padding:10px;">
                         <button class="btn btn-primary" style="width:100%;" ng-click="teamApointsUpdate()"> smash</button>
                     </div>
@@ -117,8 +187,8 @@
                     <div style="padding:10px;">
                         <button class="btn btn-primary" style="width:100%;" ng-click="teamApointsUpdate()"> placement</button>
                     </div>
-                </div>
-                <div style="display: flex;flex-direction: column;position: absolute; top: 150px;right:0px;">
+                </div> -->
+                <!-- <div style="display: flex;flex-direction: column;position: absolute; top: 150px;right:0px;">
 
                         <div style="padding:10px;">
                             <button class="btn btn-primary" style="width:100%;" ng-click="teamBpointsUpdate()"> smash</button>
@@ -131,7 +201,7 @@
                             <button class="btn btn-primary" style="width:100%;" ng-click="teamBpointsUpdate()"> placement</button>
                         </div>
 
-                </div>
+                </div> -->
                 <div style="float:right;" ng-if="courtDisable">
                         <button class="btn btn-primary" style="width:100%;" ng-disabled="undoDisable" ng-click="undo()"> Undo</button>
                 </div>

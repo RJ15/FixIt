@@ -390,6 +390,8 @@ input[type="checkbox"] {
     display: grid;
     grid-template-rows: 40px 120px 120px 40px;
     grid-template-columns: 50px 200px 80px 80px 200px 50px;
+    position: absolute;
+    
     /* position: absolute;
     top: 50%;
     left: 50%;
@@ -413,7 +415,7 @@ input[type="checkbox"] {
 } */
 
 .activePlayer{
-    background: rgb(158, 51, 51);
+    background: rgb(158, 51, 51) !important;
 
 }
 
@@ -450,3 +452,37 @@ input[type="checkbox"] {
     width: 25px;
 }
 
+.score-btn{
+    border-radius: 20px;
+    margin-top: 2px;
+    border: 2px solid black;
+    height: 34px;
+    width: 34px;
+    outline: none !important;
+}
+
+.btn-primary:focus{
+    border: 2px solid black;
+    background-color: red;
+}
+
+#bubble {
+    width: 10px;
+    height: 10px;
+    border-radius:50%;
+    background-color: red;
+    position: absolute;
+    transition: all 2s;
+
+
+}
+
+/* 
+
+@keyframes example {
+    0%   {background-color:red; left:0px; top:0px;}
+    
+    100% {background-color:red; left:400px; top:0px;}
+}
+
+ */
