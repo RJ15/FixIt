@@ -80,7 +80,10 @@
                                 <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()"> P</button>
                             </div>
                             <div style="padding:1px;">
-                                <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()"> E</button>
+                                <button class="btn btn-danger score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()"> E</button>
+                            </div>
+                            <div style="padding:1px;">
+                                <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()"> S</button>
                             </div>
                         </div>
                     
@@ -100,7 +103,10 @@
                             <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()"> P</button>
                         </div>
                         <div style="padding:1px;">
-                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()"> E</button>
+                            <button class="btn btn-danger score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()"> E</button>
+                        </div>
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()"> S</button>
                         </div>
                         </div>
 
@@ -113,7 +119,11 @@
                             <button ng-if="!isStart" class="btn btn-primary btn-icon" ng-click="$event.stopPropagation();swapA()">&lt;      &gt;</button>
                         </div>
                     </div>
-                    <div class="boxA"></div>
+                    <div class="boxA">
+                        <div class="swap ng-scope" style="position: absolute;top: 142px;left: 46%;" ng-if="!courtDisable">
+                            <button ng-if="!isStart" class="btn btn-primary ng-scope" ng-click="$event.stopPropagation();swapAB()">&lt;      &gt;</button>
+                    </div>
+                    </div>
                     <div class="boxB"></div>
                     <div id="playerB1" class="player-box boxB" ng-click="setActivePlayer(teamBId)">
                         <div style="margin-top: 50;"><b>{{playerB1}}</b></div>
@@ -145,7 +155,10 @@
                             <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()"> P</button>
                         </div>
                         <div style="padding:1px;">
-                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()"> E</button>
+                            <button class="btn btn-danger score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()"> E</button>
+                        </div>
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()"> S</button>
                         </div>
                         </div>
                        
@@ -167,7 +180,10 @@
                             <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()"> P</button>
                         </div>
                         <div style="padding:1px;">
-                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()"> E</button>
+                            <button class="btn btn-danger score-btn" ng-click="$event.stopPropagation();teamApointsUpdate()"> E</button>
+                        </div>
+                        <div style="padding:1px;">
+                            <button class="btn btn-primary score-btn" ng-click="$event.stopPropagation();teamBpointsUpdate()"> S</button>
                         </div>
                         </div>
                     </div>

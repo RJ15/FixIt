@@ -128,6 +128,16 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
         $scope.playerB2 = temp;
     }
 
+    $scope.swapAB = function () {
+        var temp1 =  $scope.playerA1;
+        $scope.playerA1 = $scope.playerB1;
+        $scope.playerB1 = temp1;
+
+        var temp2 =  $scope.playerA2;
+        $scope.playerA2 = $scope.playerB2;
+        $scope.playerB2 = temp2;
+    }
+
 
 
     $scope.start = function () {
@@ -163,9 +173,9 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
                  $('#bubble').css('top',y+70);
                  $('#bubble').css('left',x+10);
                  $('.boxA').css('opacity','0.5');
-                 $('.boxA').each(function (){
-                    this.style.pointerEvents = 'none'; 
-                 }); 
+                //  $('.boxA').each(function (){
+                //     this.style.pointerEvents = 'none'; 
+                //  }); 
                  
                  if($scope.second == true){
                     
@@ -189,9 +199,9 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
                  $('#bubble').css('top',y+70);
                  $('#bubble').css('left',x+10);
                  $('.boxB').css('opacity','0.5');
-                 $('.boxB').each(function (){
-                    this.style.pointerEvents = 'none'; 
-                 });
+                //  $('.boxB').each(function (){
+                //     this.style.pointerEvents = 'none'; 
+                //  });
                  if($scope.second == true){
                     
                     
