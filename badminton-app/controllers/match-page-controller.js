@@ -151,13 +151,13 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
     
     $scope.getCourtCoordinates = function () {
         
-        
+        if($scope.isScoreSelected){
             $scope.isCoordinateSelected = true;
-            
-
+        
             $('.boxA').bind('click', function (ev) {
-
                 ev.stopImmediatePropagation();
+                if($scope.isCoordinateSelected == true)
+                {
                 if($scope.first == false){
                     $scope.first = true;
                 }
@@ -166,12 +166,18 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
                 }
                 
                 var offset = $('.court').offset();
-                var x = ev.clientX - offset.left;
-                var y = ev.clientY - offset.top;
-
+                var x = ev.clientX - offset.left  ;
+                var y;
+                if($(window).scrollTop() > 0){
+                    y = ev.clientY - (offset.top - $(window).scrollTop());
+                }
+                else{
+                    y = ev.clientY - offset.top  ;
+                }
+                 
                 console.log(x, y);
-                 $('#bubble').css('top',y+70);
-                 $('#bubble').css('left',x+10);
+                $('#bubble').css('top',y);
+                $('#bubble').css('left',x);
                  $('.boxA').css('opacity','0.5');
                 //  $('.boxA').each(function (){
                 //     this.style.pointerEvents = 'none'; 
@@ -182,8 +188,12 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
                     $scope.restore();
                   
                  }
+                }
+                 
             });
             $('.boxB').bind('click',function (ev) {
+                if($scope.isCoordinateSelected == true)
+                {
                 if($scope.first == false){
                     $scope.first = true;
                 }
@@ -192,12 +202,18 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
                 }
                 
                 var offset = $('.court').offset();
-                var x = ev.clientX - offset.left;
-                var y = ev.clientY - offset.top;
+                var x = ev.clientX - offset.left  ;
+                var y;
+                if($(window).scrollTop() > 0){
+                    y = ev.clientY - (offset.top - $(window).scrollTop());
+                }else{
+                    y = ev.clientY - offset.top  ;
+
+                }
 
                 console.log(x, y);
-                 $('#bubble').css('top',y+70);
-                 $('#bubble').css('left',x+10);
+                 $('#bubble').css('top',y);
+                 $('#bubble').css('left',x);
                  $('.boxB').css('opacity','0.5');
                 //  $('.boxB').each(function (){
                 //     this.style.pointerEvents = 'none'; 
@@ -209,9 +225,10 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
                     
                     
                  }
+                }
                  
             });
-            
+        }
         
     }
 

@@ -1,6 +1,6 @@
 /* mobile screen styles */
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 640px) {
     body {
         width: 100%;
         overflow-x: hidden;
@@ -65,7 +65,7 @@
 
 /* desktop screen styles */
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 650px) {
     body {
         width: 75%;
         margin: auto;
@@ -389,7 +389,7 @@ input[type="checkbox"] {
 .court {
     display: grid;
     grid-template-rows: 40px 120px 120px 40px;
-    grid-template-columns: 50px 200px 80px 80px 200px 50px;
+    grid-template-columns: 50px 180px 80px 80px 180px 50px;
     position: absolute;
     
     /* position: absolute;
@@ -453,11 +453,12 @@ input[type="checkbox"] {
 }
 
 .score-btn{
-    border-radius: 20px;
+    border-radius: 10px;
     margin-top: 2px;
     border: 2px solid black;
-    height: 34px;
-    width: 34px;
+    height: 30px;
+    width: 30px;
+
     outline: none !important;
 }
 
