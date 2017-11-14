@@ -478,6 +478,10 @@ input[type="checkbox"] {
 
 }
 
+.activeBar {
+    border-bottom: 2px solid white;
+}
+
 /* 
 
 @keyframes example {

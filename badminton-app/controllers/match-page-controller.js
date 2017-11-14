@@ -1,4 +1,4 @@
-angular.module('badminton').controller('matchPageController', function ($scope, $rootScope, $state, $uibModal, $stateParams, $login,$timeout, usSpinnerService, $localStorage) {
+angular.module('badminton').controller('matchPageController', function ($scope, $rootScope, $state, $uibModal, $stateParams, $login, $timeout, usSpinnerService, $localStorage) {
     'use strict'
 
 
@@ -22,7 +22,11 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
         "teamAplayer1": "",
         "teamAplayer2": "",
         "teamBplayer1": "",
-        "teamBplayer2": ""
+        "teamBplayer2": "",
+        "shotFromPositionX": "",
+        "shotFromPositionY": "",
+        "shotEndPositionX": "",
+        "shotEndPositionY": "",
 
     }];
 
@@ -129,11 +133,11 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
     }
 
     $scope.swapAB = function () {
-        var temp1 =  $scope.playerA1;
+        var temp1 = $scope.playerA1;
         $scope.playerA1 = $scope.playerB1;
         $scope.playerB1 = temp1;
 
-        var temp2 =  $scope.playerA2;
+        var temp2 = $scope.playerA2;
         $scope.playerA2 = $scope.playerB2;
         $scope.playerB2 = temp2;
     }
@@ -148,111 +152,142 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
     $scope.isCoordinateSelected = false;
     $scope.first = false;
     $scope.second = false;
-    
+
     $scope.getCourtCoordinates = function () {
-        
-        if($scope.isScoreSelected){
+
+        if ($scope.isScoreSelected) {
             $scope.isCoordinateSelected = true;
-        
+
             $('.boxA').bind('click', function (ev) {
                 ev.stopImmediatePropagation();
-                if($scope.isCoordinateSelected == true)
-                {
-                if($scope.first == false){
-                    $scope.first = true;
+                if ($scope.isCoordinateSelected == true) {
+
+                    var offset = $('.court').offset();
+                    var x = ev.clientX - offset.left;
+                    var y;
+                    if ($(window).scrollTop() > 0) {
+                        y = ev.clientY - (offset.top - $(window).scrollTop());
+                    }
+                    else {
+                        y = ev.clientY - offset.top;
+                    }
+                    if ($scope.first == false) {
+                        $scope.first = true;
+                        $scope.getXYFromPosition(x, y);
+                    }
+                    else {
+                        $scope.second = true;
+                    }
+
+                    console.log(x, y);
+                    $('#bubble').css('top', y);
+                    $('#bubble').css('left', x);
+                    $('.boxA').css('opacity', '0.5');
+                    //  $('.boxA').each(function (){
+                    //     this.style.pointerEvents = 'none'; 
+                    //  }); 
+
+                    if ($scope.second == true) {
+
+                        $scope.getXYEndPosition(x, y);
+                        $scope.restore();
+
+                    }
                 }
-                else{
-                    $scope.second = true;
-                }
-                
-                var offset = $('.court').offset();
-                var x = ev.clientX - offset.left  ;
-                var y;
-                if($(window).scrollTop() > 0){
-                    y = ev.clientY - (offset.top - $(window).scrollTop());
-                }
-                else{
-                    y = ev.clientY - offset.top  ;
-                }
-                 
-                console.log(x, y);
-                $('#bubble').css('top',y);
-                $('#bubble').css('left',x);
-                 $('.boxA').css('opacity','0.5');
-                //  $('.boxA').each(function (){
-                //     this.style.pointerEvents = 'none'; 
-                //  }); 
-                 
-                 if($scope.second == true){
-                    
-                    $scope.restore();
-                  
-                 }
-                }
-                 
+
             });
-            $('.boxB').bind('click',function (ev) {
-                if($scope.isCoordinateSelected == true)
-                {
-                if($scope.first == false){
-                    $scope.first = true;
-                }
-                else{
-                    $scope.second = true;
-                }
-                
-                var offset = $('.court').offset();
-                var x = ev.clientX - offset.left  ;
-                var y;
-                if($(window).scrollTop() > 0){
-                    y = ev.clientY - (offset.top - $(window).scrollTop());
-                }else{
-                    y = ev.clientY - offset.top  ;
+            $('.boxB').bind('click', function (ev) {
+                if ($scope.isCoordinateSelected == true) {
 
+                    var offset = $('.court').offset();
+                    var x = ev.clientX - offset.left;
+                    var y;
+                    if ($(window).scrollTop() > 0) {
+                        y = ev.clientY - (offset.top - $(window).scrollTop());
+                    } else {
+                        y = ev.clientY - offset.top;
+
+                    }
+                    if ($scope.first == false) {
+                        $scope.first = true;
+                        $scope.getXYFromPosition(x, y);
+                    }
+                    else {
+                        $scope.second = true;
+                    }
+
+                    console.log(x, y);
+                    $('#bubble').css('top', y);
+                    $('#bubble').css('left', x);
+                    $('.boxB').css('opacity', '0.5');
+                    //  $('.boxB').each(function (){
+                    //     this.style.pointerEvents = 'none'; 
+                    //  });
+                    if ($scope.second == true) {
+
+                        $scope.getXYEndPosition(x, y);
+                        $scope.restore();
+
+
+                    }
                 }
 
-                console.log(x, y);
-                 $('#bubble').css('top',y);
-                 $('#bubble').css('left',x);
-                 $('.boxB').css('opacity','0.5');
-                //  $('.boxB').each(function (){
-                //     this.style.pointerEvents = 'none'; 
-                //  });
-                 if($scope.second == true){
-                    
-                    
-                    $scope.restore();
-                    
-                    
-                 }
-                }
-                 
             });
         }
-        
+
     }
 
-    $scope.restore = function(){
-        $timeout(function(){
-            $('.court > div').css('background-color', 'white');
-            $('.boxA').css('opacity','1');
-            $('.boxB').css('opacity','1');
-            $('.boxA').each(function (){
-                this.style.pointerEvents = 'auto'; 
-             });
-             $('.boxB').each(function (){
-                this.style.pointerEvents = 'auto'; 
-             });
-             $scope.isCoordinateSelected = false;
-             $scope.isScoreSelected = false;
-             $scope.first = false;
-             $scope.isSet = false;
-             $scope.second = false;
-             var ele = $(".activePlayer");
-             ele.addClass("activePlayer");
-        },4000);
+    $scope.getXYFromPosition = function (xValue, yValue) {
+        var fromPoint = {};
+        fromPoint = $scope.getXYPostions(xValue, yValue);
+        $scope.shotFromPositionX = fromPoint.xPostion;
+        $scope.shotFromPositionY = fromPoint.yPostion;
+    }
 
-        
+    $scope.getXYEndPosition = function (xValue, yValue) {
+        var endPoint = {};
+        endPoint = $scope.getXYPostions(xValue, yValue);
+        $scope.shotEndPositionX = endPoint.xPostion;
+        $scope.shotEndPositionY = endPoint.yPostion;
+    }
+
+    $scope.getXYPostions = function (xValue, yValue) {
+        var postions = {};
+        if (xValue > 310) {
+            postions.xPostion = xValue - 310;
+            if (yValue > 160) {
+                postions.yPostion = Math.abs(yValue - 320);
+            } else {
+                postions.yPostion = 320 - yValue;
+            }
+        } else if (xValue < 310) {
+            postions.xPostion = 310 - xValue;
+            postions.yPostion = yValue;
+        }
+        return postions;
+    }
+
+    $scope.restore = function () {
+        $timeout(function () {
+            $('.court > div').css('background-color', 'white');
+            $('.boxA').css('opacity', '1');
+            $('.boxB').css('opacity', '1');
+            $('.boxA').each(function () {
+                this.style.pointerEvents = 'auto';
+            });
+            $('.boxB').each(function () {
+                this.style.pointerEvents = 'auto';
+            });
+            $scope.isCoordinateSelected = false;
+            $scope.isScoreSelected = false;
+            $scope.first = false;
+            $scope.isSet = false;
+            $scope.second = false;
+            var ele = $(".activePlayer");
+            ele.addClass("activePlayer");
+        }, 4000);
+
+
     }
 
 
@@ -260,8 +295,8 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
         console.log("updating");
         $scope.isScoreSelected = true;
         $('.court > div').css('background-color', 'yellow');
-        $scope.getCourtCoordinates ();
-        
+        $scope.getCourtCoordinates();
+
 
         $scope.teamApoints = $scope.teamApoints + 1;
         $scope.activePlayerId = $(".activePlayer").attr('id');
@@ -274,6 +309,10 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
             teamAplayer2: $scope.playerA2,
             teamBplayer1: $scope.playerB1,
             teamBplayer2: $scope.playerB2,
+            shotFromPositionX: $scope.shotFromPositionX,
+            shotFromPositionY: $scope.shotFromPositionY,
+            shotEndPositionX: $scope.shotEndPositionX,
+            shotEndPositionY: $scope.shotEndPositionY
 
         })
         if ($scope.teamApoints > 20) {
@@ -281,7 +320,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
             window.location.reload();
         }
         $scope.courtDisable = true;
-        
+
         if ($scope.receiveTeam != "teamA") {
             $scope.swapA();
         }
@@ -304,15 +343,15 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
             }
         }
-        
+
 
 
     }
     $scope.teamBpointsUpdate = function () {
         $scope.isScoreSelected = true;
         $('.court > div').css('background-color', 'yellow');
-        
-        $scope.getCourtCoordinates ();
+
+        $scope.getCourtCoordinates();
         $scope.teamBpoints = $scope.teamBpoints + 1;
         $scope.activePlayerId = $(".activePlayer").attr('id');
         $scope.undoDisable = false;
@@ -324,6 +363,10 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
             teamAplayer2: $scope.playerA2,
             teamBplayer1: $scope.playerB1,
             teamBplayer2: $scope.playerB2,
+            shotFromPositionX: $scope.shotFromPositionX,
+            shotFromPositionY: $scope.shotFromPositionY,
+            shotEndPositionX: $scope.shotEndPositionX,
+            shotEndPositionY: $scope.shotEndPositionY
 
         })
         if ($scope.teamBpoints > 20) {
@@ -369,7 +412,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
     $scope.gotoFixtures = function () {
         $state.go("fixturesPage");
     }
-    $scope.gotoTeams = function(){
+    $scope.gotoTeams = function () {
         $state.go("teamsPage");
     }
 
