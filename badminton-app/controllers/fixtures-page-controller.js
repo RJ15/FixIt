@@ -12,7 +12,7 @@ angular.module('badminton').controller('fixturesPageController', function ($scop
 
 
     // code fixtures
-    
+    $scope.generated = false;
     $scope.teams = [
         {
             name: "Bulldozers",
@@ -111,6 +111,10 @@ angular.module('badminton').controller('fixturesPageController', function ($scop
         var totalGames = getNumberOfGames(numberofPlayersPerTeam);
         var maxGamesPerPlayer = numberofPlayersPerTeam - 1;
         $scope.games = generate(totalGames, maxGamesPerPlayer);
+
+        if ($scope.games.length > 0) {
+            $scope.generated = true;
+        }
         
        
     }
@@ -228,6 +232,7 @@ angular.module('badminton').controller('fixturesPageController', function ($scop
             }
         } catch (error) {
             alert("Unable to generate, retry!");
+            $scope.generated = false;
             games = [];
         }
         return games;
