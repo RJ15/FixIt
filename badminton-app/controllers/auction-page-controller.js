@@ -335,5 +335,8 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     $scope.gotoTeams = function(){
         $state.go("teamsPage");
     }
+    $scope.gotoMatch = function(){
+        $state.go("matchPage")
+    }
 
 })

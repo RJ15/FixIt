@@ -369,5 +369,8 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
     $scope.gotoFixtures = function () {
         $state.go("fixturesPage");
     }
+    $scope.gotoTeams = function(){
+        $state.go("teamsPage");
+    }
 
 })

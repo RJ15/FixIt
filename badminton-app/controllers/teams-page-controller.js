@@ -23,4 +23,7 @@ angular.module('badminton').controller('teamsPageController', function ($scope, 
     $scope.gotoTeams = function(){
         $state.go("teamsPage");
     }
+    $scope.gotoMatch = function(){
+        $state.go("matchPage")
+    }
 })
