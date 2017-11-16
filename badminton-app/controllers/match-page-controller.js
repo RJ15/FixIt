@@ -15,6 +15,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
     $scope.receiveTeam = "";
     $scope.courtDisable = false;
     $scope.isScoreSelected = false;
+    $scope.scoreType = ["smash","drop","placement","error","serve"];
     $scope.gameTrack = [{
         "teamApoints": 0,
         "teamBpoints": 0,
@@ -27,6 +28,8 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
         "shotFromPositionY": "",
         "shotEndPositionX": "",
         "shotEndPositionY": "",
+        "scoreType": "",
+        "scoreBy": ""
 
     }];
 
@@ -174,9 +177,12 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
                     if ($scope.first == false) {
                         $scope.first = true;
                         $scope.getXYFromPosition(x, y);
+                        
+                        
                     }
                     else {
                         $scope.second = true;
+                        
                     }
 
                     console.log(x, y);
@@ -190,6 +196,11 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
                     if ($scope.second == true) {
 
                         $scope.getXYEndPosition(x, y);
+                        var len = $scope.gameTrack.length - 1;
+                        $scope.gameTrack[len].shotFromPositionX = $scope.shotFromPositionX;
+                        $scope.gameTrack[len].shotFromPositionY = $scope.shotFromPositionY;
+                        $scope.gameTrack[len].shotEndPositionX = $scope.shotEndPositionX;
+                        $scope.gameTrack[len].shotEndPositionY = $scope.shotEndPositionY;
                         $scope.restore();
 
                     }
@@ -211,9 +222,11 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
                     if ($scope.first == false) {
                         $scope.first = true;
                         $scope.getXYFromPosition(x, y);
+                        
                     }
                     else {
                         $scope.second = true;
+                        
                     }
 
                     console.log(x, y);
@@ -226,6 +239,11 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
                     if ($scope.second == true) {
 
                         $scope.getXYEndPosition(x, y);
+                        var len = $scope.gameTrack.length - 1;
+                        $scope.gameTrack[len].shotFromPositionX = $scope.shotFromPositionX;
+                        $scope.gameTrack[len].shotFromPositionY = $scope.shotFromPositionY;
+                        $scope.gameTrack[len].shotEndPositionX = $scope.shotEndPositionX;
+                        $scope.gameTrack[len].shotEndPositionY = $scope.shotEndPositionY;
                         $scope.restore();
 
 
@@ -291,7 +309,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
     }
 
 
-    $scope.teamApointsUpdate = function () {
+    $scope.teamApointsUpdate = function (type,player) {
         console.log("updating");
         $scope.isScoreSelected = true;
         $('.court > div').css('background-color', 'yellow');
@@ -309,10 +327,8 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
             teamAplayer2: $scope.playerA2,
             teamBplayer1: $scope.playerB1,
             teamBplayer2: $scope.playerB2,
-            shotFromPositionX: $scope.shotFromPositionX,
-            shotFromPositionY: $scope.shotFromPositionY,
-            shotEndPositionX: $scope.shotEndPositionX,
-            shotEndPositionY: $scope.shotEndPositionY
+            scoreType: type,
+            scoreBy: player
 
         })
         if ($scope.teamApoints > 20) {
@@ -347,7 +363,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
 
     }
-    $scope.teamBpointsUpdate = function () {
+    $scope.teamBpointsUpdate = function (type,player) {
         $scope.isScoreSelected = true;
         $('.court > div').css('background-color', 'yellow');
 
@@ -363,10 +379,9 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
             teamAplayer2: $scope.playerA2,
             teamBplayer1: $scope.playerB1,
             teamBplayer2: $scope.playerB2,
-            shotFromPositionX: $scope.shotFromPositionX,
-            shotFromPositionY: $scope.shotFromPositionY,
-            shotEndPositionX: $scope.shotEndPositionX,
-            shotEndPositionY: $scope.shotEndPositionY
+            scoreType: type,
+            scoreBy: player
+            
 
         })
         if ($scope.teamBpoints > 20) {
