@@ -19,7 +19,9 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
     $scope.gameTrack = [{
         "teamAScore": 0,
         "teamBScore": 0,
-        "activePlayerId": "",
+        "serviceBy": "",
+        "scoreType": "",
+        "scoreAttribution": "",
         "teamAplayer1": "",
         "teamAplayer2": "",
         "teamBplayer1": "",
@@ -28,8 +30,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
         "shotFromPositionY": "",
         "shotEndPositionX": "",
         "shotEndPositionY": "",
-        "scoreType": "",
-        "scoreBy": ""
+        "scoreTime": 0
 
     }];
 
@@ -310,7 +311,8 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
 
     $scope.teamAScoreUpdate = function (type,player) {
-        console.log("updating");
+        console.log("updating team A Score");
+        $scope.scoreTime = new Date().getTime();
         $scope.isScoreSelected = true;
         $('.court > div').css('background-color', 'yellow');
         $scope.getCourtCoordinates();
@@ -322,13 +324,14 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
         $scope.gameTrack.push({
             teamAScore: $scope.teamAScore,
             teamBScore: $scope.teamBScore,
-            activePlayerId: $scope.activePlayerId,
+            serviceBy: $scope.activePlayerId,
             teamAplayer1: $scope.playerA1,
             teamAplayer2: $scope.playerA2,
             teamBplayer1: $scope.playerB1,
             teamBplayer2: $scope.playerB2,
             scoreType: type,
-            scoreBy: player
+            scoreAttribution: player,
+            scoreTime: $scope.scoreTime
 
         })
         if ($scope.teamAScore > 20) {
@@ -364,6 +367,8 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
     }
     $scope.teamBScoreUpdate = function (type,player) {
+        console.log("updating team B Score");
+        $scope.scoreTime = new Date().getTime();
         $scope.isScoreSelected = true;
         $('.court > div').css('background-color', 'yellow');
 
@@ -374,13 +379,14 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
         $scope.gameTrack.push({
             teamAScore: $scope.teamAScore,
             teamBScore: $scope.teamBScore,
-            activePlayerId: $scope.activePlayerId,
+            serviceBy: $scope.activePlayerId,
             teamAplayer1: $scope.playerA1,
             teamAplayer2: $scope.playerA2,
             teamBplayer1: $scope.playerB1,
             teamBplayer2: $scope.playerB2,
             scoreType: type,
-            scoreBy: player
+            scoreAttribution: player,
+            scoreTime: $scope.scoreTime
             
 
         })
