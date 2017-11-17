@@ -4,8 +4,8 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
     $scope.games = $localStorage.games;
     $scope.isPlay = false;
-    $scope.teamBpoints = 0;
-    $scope.teamApoints = 0;
+    $scope.teamBScore = 0;
+    $scope.teamAScore = 0;
     $scope.isStart = false;
     $scope.activePlayer = null;
     $scope.undoDisable = false;
@@ -17,8 +17,8 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
     $scope.isScoreSelected = false;
     $scope.scoreType = ["smash","drop","placement","error","serve"];
     $scope.gameTrack = [{
-        "teamApoints": 0,
-        "teamBpoints": 0,
+        "teamAScore": 0,
+        "teamBScore": 0,
         "activePlayerId": "",
         "teamAplayer1": "",
         "teamAplayer2": "",
@@ -35,7 +35,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
     $scope.setActivePlayer = function (id) {
         if (id == "playerA2") {
-            if ($scope.teamApoints == 0 && $scope.teamBpoints == 0) {
+            if ($scope.teamAScore == 0 && $scope.teamBScore == 0) {
                 $scope.activePlayer = $scope.playerA2;
                 $scope.serveTeam = "teamA";
                 $scope.receiveTeam = "teamB";
@@ -46,7 +46,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
                 $("#playerA2").addClass("activePlayer");
             }
         } else if (id == "playerB1") {
-            if ($scope.teamApoints == 0 && $scope.teamBpoints == 0) {
+            if ($scope.teamAScore == 0 && $scope.teamBScore == 0) {
                 $scope.activePlayer = $scope.playerB1;
                 $scope.activePlayerId = "playerB1";
                 $scope.setPlayers();
@@ -80,8 +80,8 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
         $scope.playerB2 = $scope.gameTrack[len].teamBplayer2;
         $scope.gameTrack.pop();
         len = $scope.gameTrack.length - 1;
-        $scope.teamApoints = $scope.gameTrack[len].teamApoints;
-        $scope.teamBpoints = $scope.gameTrack[len].teamBpoints;
+        $scope.teamAScore = $scope.gameTrack[len].teamAScore;
+        $scope.teamBScore = $scope.gameTrack[len].teamBScore;
 
         if (len == 0) {
             $scope.undoDisable = true;
@@ -309,19 +309,19 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
     }
 
 
-    $scope.teamApointsUpdate = function (type,player) {
+    $scope.teamAScoreUpdate = function (type,player) {
         console.log("updating");
         $scope.isScoreSelected = true;
         $('.court > div').css('background-color', 'yellow');
         $scope.getCourtCoordinates();
 
 
-        $scope.teamApoints = $scope.teamApoints + 1;
+        $scope.teamAScore = $scope.teamAScore + 1;
         $scope.activePlayerId = $(".activePlayer").attr('id');
         $scope.undoDisable = false;
         $scope.gameTrack.push({
-            teamApoints: $scope.teamApoints,
-            teamBpoints: $scope.teamBpoints,
+            teamAScore: $scope.teamAScore,
+            teamBScore: $scope.teamBScore,
             activePlayerId: $scope.activePlayerId,
             teamAplayer1: $scope.playerA1,
             teamAplayer2: $scope.playerA2,
@@ -331,7 +331,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
             scoreBy: player
 
         })
-        if ($scope.teamApoints > 20) {
+        if ($scope.teamAScore > 20) {
             alert("game won by Bulldozers");
             window.location.reload();
         }
@@ -352,7 +352,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
         else if (ele.attr('id') == "playerA1") {
             $("#playerA2").addClass("activePlayer");
         } else {
-            if ($scope.teamApoints % 2 == 0) {
+            if ($scope.teamAScore % 2 == 0) {
                 $("#playerA2").addClass("activePlayer");
             } else {
                 $("#playerA1").addClass("activePlayer");
@@ -363,17 +363,17 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
 
     }
-    $scope.teamBpointsUpdate = function (type,player) {
+    $scope.teamBScoreUpdate = function (type,player) {
         $scope.isScoreSelected = true;
         $('.court > div').css('background-color', 'yellow');
 
         $scope.getCourtCoordinates();
-        $scope.teamBpoints = $scope.teamBpoints + 1;
+        $scope.teamBScore = $scope.teamBScore + 1;
         $scope.activePlayerId = $(".activePlayer").attr('id');
         $scope.undoDisable = false;
         $scope.gameTrack.push({
-            teamApoints: $scope.teamApoints,
-            teamBpoints: $scope.teamBpoints,
+            teamAScore: $scope.teamAScore,
+            teamBScore: $scope.teamBScore,
             activePlayerId: $scope.activePlayerId,
             teamAplayer1: $scope.playerA1,
             teamAplayer2: $scope.playerA2,
@@ -384,7 +384,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
             
 
         })
-        if ($scope.teamBpoints > 20) {
+        if ($scope.teamBScore > 20) {
 
             alert("game won by smashDroppers");
             window.location.reload();
@@ -405,7 +405,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
         else if (ele.attr('id') == "playerB1") {
             $("#playerB2").addClass("activePlayer");
         } else {
-            if ($scope.teamBpoints % 2 == 0) {
+            if ($scope.teamBScore % 2 == 0) {
                 $("#playerB1").addClass("activePlayer");
             } else {
                 $("#playerB2").addClass("activePlayer");
