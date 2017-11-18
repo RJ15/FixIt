@@ -74,7 +74,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
 
         var len = $scope.gameTrack.length - 1;
-        var activeId = "#" + $scope.gameTrack[len].activePlayerId;
+        var activeId = "#" + $scope.gameTrack[len].serviceBy;
         $scope.playerA1 = $scope.gameTrack[len].teamAplayer1;
         $scope.playerA2 = $scope.gameTrack[len].teamAplayer2;
         $scope.playerB1 = $scope.gameTrack[len].teamBplayer1;
@@ -334,10 +334,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
             scoreTime: $scope.scoreTime
 
         })
-        if ($scope.teamAScore > 20) {
-            alert("game won by Bulldozers");
-            window.location.reload();
-        }
+       
         $scope.courtDisable = true;
 
         if ($scope.receiveTeam != "teamA") {
@@ -362,7 +359,10 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
             }
         }
-
+        if ($scope.teamAScore > 2 && (Math.abs($scope.teamAScore -$scope.teamBScore)>1)) {
+            alert("game won by Bulldozers");
+            window.location.reload();
+        }
 
 
     }
@@ -390,11 +390,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
             
 
         })
-        if ($scope.teamBScore > 20) {
-
-            alert("game won by smashDroppers");
-            window.location.reload();
-        }
+        
         $scope.courtDisable = true;
         $('.court > div').css('cursor', 'not-allowed');
         if ($scope.receiveTeam != "teamB") {
@@ -417,6 +413,11 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
                 $("#playerB2").addClass("activePlayer");
 
             }
+        }
+        if ($scope.teamBScore > 2 && (Math.abs($scope.teamBScore -$scope.teamAScore)>1)) {
+            
+            alert("game won by smashDroppers");
+            window.location.reload();
         }
 
     }
