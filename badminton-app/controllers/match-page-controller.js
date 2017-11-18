@@ -115,13 +115,29 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
         $scope.isPlay = true;
         $scope.gamesDetails = {};
+        $scope.matchNumber = number;
         $scope.gamesDetails = $scope.games[number - 1];
+        if($scope.gamesDetails.gameTrack == undefined){
+            $scope.playerA1 = $scope.gamesDetails.teams[0].players[0];
+            $scope.playerA2 = $scope.gamesDetails.teams[0].players[1];
+    
+            $scope.playerB1 = $scope.gamesDetails.teams[1].players[0];
+            $scope.playerB2 = $scope.gamesDetails.teams[1].players[1];
+        }
+        // else{
+        //     var len = $scope.gamesDetails.gameTrack.length;
+        //     $scope.playerA1 = $scope.gamesDetails.gameTrack[len-1].teamAplayer1;
+        //     $scope.playerA2 = $scope.gamesDetails.gameTrack[len-1].teamAplayer2;
+        //     $scope.playerB1 = $scope.gamesDetails.gameTrack[len-1].teamBplayer1;
+        //     $scope.playerB2 = $scope.gamesDetails.gameTrack[len-1].teamBplayer2;
+        //     $scope.teamAScore = $scope.gamesDetails.gameTrack[len-1].teamAScore;
+        //     $scope.teamBScore = $scope.gamesDetails.gameTrack[len-1].teamBScore;
+        //     var activeId = "#" + $scope.gamesDetails.gameTrack[len-1].serviceBy;
+        //     $(".activePlayer").removeClass('activePlayer');
+        //     $(activeId).addClass("activePlayer");
 
-        $scope.playerA1 = $scope.gamesDetails.teams[0].players[0];
-        $scope.playerA2 = $scope.gamesDetails.teams[0].players[1];
-
-        $scope.playerB1 = $scope.gamesDetails.teams[1].players[0];
-        $scope.playerB2 = $scope.gamesDetails.teams[1].players[1];
+        // }
+        
     }
 
     $scope.swapA = function () {
@@ -334,7 +350,13 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
             scoreTime: $scope.scoreTime
 
         })
-       
+        if ($scope.teamAScore > 20 && (Math.abs($scope.teamAScore -$scope.teamBScore)>1)) {
+            alert("game won by Bulldozers");
+            $localStorage.games[$scope.matchNumber-1].gameTrack = {};
+            $localStorage.games[$scope.matchNumber-1].gameTrack = $scope.gameTrack;
+            $localStorage.games[$scope.matchNumber-1].result = "Winner: BullDozers";
+            window.location.reload();
+        }
         $scope.courtDisable = true;
 
         if ($scope.receiveTeam != "teamA") {
@@ -359,10 +381,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
             }
         }
-        if ($scope.teamAScore > 2 && (Math.abs($scope.teamAScore -$scope.teamBScore)>1)) {
-            alert("game won by Bulldozers");
-            window.location.reload();
-        }
+
 
 
     }
@@ -390,7 +409,14 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
             
 
         })
-        
+        if ($scope.teamBScore > 20 && (Math.abs($scope.teamBScore -$scope.teamAScore)>1)) {
+
+            alert("game won by smashDroppers");
+            $localStorage.games[$scope.matchNumber-1].gameTrack = {};
+            $localStorage.games[$scope.matchNumber-1].gameTrack = $scope.gameTrack;
+            $localStorage.games[$scope.matchNumber-1].result = "Winner: SmashDroppers";
+            window.location.reload();
+        }
         $scope.courtDisable = true;
         $('.court > div').css('cursor', 'not-allowed');
         if ($scope.receiveTeam != "teamB") {
@@ -413,11 +439,6 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
                 $("#playerB2").addClass("activePlayer");
 
             }
-        }
-        if ($scope.teamBScore > 2 && (Math.abs($scope.teamBScore -$scope.teamAScore)>1)) {
-            
-            alert("game won by smashDroppers");
-            window.location.reload();
         }
 
     }

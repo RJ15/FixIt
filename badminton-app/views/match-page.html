@@ -24,7 +24,8 @@
     <div class="col-md-5 col-xs-12 card " ng-class="getClass($index)" ng-repeat="game in games">
         <div class="container">
             <h3 style="display:inline-flex;">Game {{game.matchNumber}}</h3>
-            <a style="float: right;font-size: 24px;margin-top: 10px;" ng-click="play(game.matchNumber)">Play</a>
+            <a ng-if="!game.result"style="float: right;font-size: 24px;margin-top: 10px;" ng-click="play(game.matchNumber)">Play</a>
+            <a ng-if="game.result"style="float: right;font-size: 24px;margin-top: 10px;" >{{game.result}}</a>
             <table class="col-md-12 col-xs-12">
                 <tr>
                     <th style="width:100%;">
@@ -57,6 +58,7 @@
                     </td>
                 </tr>
             </table>
+            
         </div>
     </div>
     </div>
