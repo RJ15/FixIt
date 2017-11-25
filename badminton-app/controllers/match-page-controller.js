@@ -324,11 +324,13 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
 
     }
-
+    $scope.getScoreTime = function () {
+        return new Date().getTime();
+    }
 
     $scope.teamAScoreUpdate = function (type,player) {
         console.log("updating team A Score");
-        $scope.scoreTime = new Date().getTime();
+        $scope.scoreTime = $scope.getScoreTime();
         $scope.isScoreSelected = true;
         $('.court > div').css('background-color', 'yellow');
         $scope.getCourtCoordinates();
@@ -387,7 +389,7 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
     }
     $scope.teamBScoreUpdate = function (type,player) {
         console.log("updating team B Score");
-        $scope.scoreTime = new Date().getTime();
+        $scope.scoreTime = $scope.getScoreTime();
         $scope.isScoreSelected = true;
         $('.court > div').css('background-color', 'yellow');
 
