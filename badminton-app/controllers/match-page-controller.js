@@ -34,6 +34,15 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
 
     }];
 
+    $scope.getServiceBy = function (id) {
+        var playerId = "#" + id;
+        var isServiceBy = true;
+        if($(playerId).hasClass("activePlayer")) {
+            isServiceBy = false;
+        }
+        return isServiceBy;
+    }
+
     $scope.setActivePlayer = function (id) {
         if (id == "playerA2") {
             if ($scope.teamAScore == 0 && $scope.teamBScore == 0) {
