@@ -1,5 +1,6 @@
-<div id="header"> 
-    <nav class="navbar navbar-inverse">
+<div id="header" style="background-color:black;"> 
+   
+  <nav class="navbar navbar-inverse display-desktop">
   <div class="container-fluid">
     <div class="navbar-header">
     <ul class="nav navbar-nav fs-18">
@@ -7,10 +8,33 @@
       <li><a ng-click="gotoHome()">Home</a></li>
       <li><a ng-click="gotoPlayers()">Players</a></li>
       <li><a ng-click="gotoTeams()">Teams</a></li>
-      <li class="activeBar"><a ng-click="gotoAuction()">Auction</a></li>
+      <li><a ng-click="gotoAuction()">Auction</a></li>
       <li><a ng-click="gotoFixtures()">Fixtures</a></li>
       <li><a ng-click="gotoMatch()">Match</a></li>
     </ul>
   </div>
 </nav>
+
+
+<div id="mySidenav" class="sidenav display-mobile" >
+  
+  <a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
+  <a ng-click="gotoHome()">Home</a>
+  <a ng-click="gotoPlayers()">Players</a>
+  <a ng-click="gotoTeams()">Teams</a>
+  <a ng-click="gotoAuction()">Auction</a>
+  <a ng-click="gotoFixtures()">Fixtures</a>
+  <a ng-click="gotoMatch()">Match</a>
+</div>
+<span class="display-mobile" style="font-size:30px;cursor:pointer;color: white;
+padding-left: 20px;" ng-click="openNav()">&#9776;  </span>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "100%";
+    }
+    
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
 </div>

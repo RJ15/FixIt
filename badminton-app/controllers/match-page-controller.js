@@ -470,4 +470,10 @@ angular.module('badminton').controller('matchPageController', function ($scope, 
         $state.go("teamsPage");
     }
 
+    $scope.openNav = function(){
+        document.getElementById("mySidenav").style.width = "100%";
+    }
+    $scope.closeNav = function(){
+        document.getElementById("mySidenav").style.width = "0";
+    }
 })

@@ -7,7 +7,12 @@ angular.module('badminton').controller('teamsPageController', function ($scope, 
     $scope.stopSpin = function () {
         usSpinnerService.stop('spinner-1');
     }
-
+    $scope.openNav = function(){
+        document.getElementById("mySidenav").style.width = "100%";
+    }
+    $scope.closeNav = function(){
+        document.getElementById("mySidenav").style.width = "0";
+    }   
     $scope.gotoHome = function(){
         $state.go("homePage");
     }

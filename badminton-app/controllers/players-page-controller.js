@@ -66,6 +66,12 @@ angular.module('badminton').controller('playersPageController', function ($scope
             }
         });
     }
+    $scope.openNav = function(){
+        document.getElementById("mySidenav").style.width = "100%";
+    }
+    $scope.closeNav = function(){
+        document.getElementById("mySidenav").style.width = "0";
+    }
     
     $scope.gotoHome = function(){
         $state.go("homePage");

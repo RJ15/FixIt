@@ -5,4 +5,5 @@ angular.module('badminton').directive('header', function () {
         templateUrl: 'directive/header-view.html'
     };
     
+    
 })
