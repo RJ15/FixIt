@@ -1,7 +1,7 @@
-angular.module('badminton').controller('playersPageController', function ($scope, $timeout, $rootScope, $state, $uibModal, $stateParams, $http, $game, usSpinnerService,$bidding) {
+angular.module('badminton').controller('playersPageController', function ($scope, $timeout, $rootScope, $state, $uibModal, $stateParams, $http, $game, usSpinnerService, $bidding) {
     'use strict'
-   
-       
+
+
     $scope.startSpin = function () {
         usSpinnerService.spin('spinner-1');
     }
@@ -46,18 +46,18 @@ angular.module('badminton').controller('playersPageController', function ($scope
 
     $scope.smashDroppers = [
         {
-            "name":"Keshav",
-            "price":"35 lakhs"
+            "name": "Keshav",
+            "price": "35 lakhs"
 
         }
     ];
 
     $scope.$on('$viewContentLoaded', function () {
         $scope.getAllSeasonPlayers();
-        
+
     });
-    
-    $scope.getAllSeasonPlayers = function() {
+
+    $scope.getAllSeasonPlayers = function () {
         $game.getAllPlayers().then(function (response) {
             $scope.startSpin();
             if (response.statusCode) {
@@ -66,31 +66,30 @@ angular.module('badminton').controller('playersPageController', function ($scope
             }
         });
     }
-    $scope.openNav = function(){
+    $scope.openNav = function () {
         document.getElementById("mySidenav").style.width = "100%";
     }
-    $scope.closeNav = function(){
+    $scope.closeNav = function () {
         document.getElementById("mySidenav").style.width = "0";
     }
-    
-    $scope.gotoHome = function(){
+
+    $scope.gotoHome = function () {
         $state.go("homePage");
     }
-    $scope.gotoPlayers = function(){
+    $scope.gotoPlayers = function () {
         $state.go("playersPage");
     }
-    $scope.gotoAuction = function(){
+    $scope.gotoAuction = function () {
         $state.go("auctionPage");
     }
-    $scope.gotoFixtures = function(){
+    $scope.gotoFixtures = function () {
         $state.go("fixturesPage");
     }
-    $scope.gotoTeams = function(){
+    $scope.gotoTeams = function () {
         $state.go("teamsPage");
     }
-    $scope.gotoMatch = function(){
+    $scope.gotoMatch = function () {
         $state.go("matchPage")
     }
-	
+
 })
-    

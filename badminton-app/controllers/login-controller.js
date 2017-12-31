@@ -1,15 +1,15 @@
-angular.module('badminton').controller('loginController', function ($scope, $rootScope, $state, $uibModal,$stateParams,$login,usSpinnerService) {
+angular.module('badminton').controller('loginController', function ($scope, $rootScope, $state, $uibModal, $stateParams, $login, usSpinnerService) {
     'use strict'
-   
-    $scope.username="";
-    $scope.password="";
+
+    $scope.username = "";
+    $scope.password = "";
     $scope.startSpin = function () {
         usSpinnerService.spin('spinner-1');
     }
     $scope.stopSpin = function () {
         usSpinnerService.stop('spinner-1');
     }
-    $scope.login = function(){
+    $scope.login = function () {
         //test login
         // if($scope.username == "keer" && $scope.password == "1234"){
         //     alert("Success");
@@ -19,7 +19,7 @@ angular.module('badminton').controller('loginController', function ($scope, $roo
         //     alert("failure");
         // }
         var data = {
-            userName : $scope.username,
+            userName: $scope.username,
             password: $scope.password
         }
         $login.doLogin(data).then(function (response) {

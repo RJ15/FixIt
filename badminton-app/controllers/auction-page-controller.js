@@ -1,4 +1,4 @@
-angular.module('badminton').controller('auctionPageController', function ($scope, $timeout, $rootScope, $state, $uibModal, $stateParams, $http, $game, usSpinnerService,$bidding) {
+angular.module('badminton').controller('auctionPageController', function ($scope, $timeout, $rootScope, $state, $uibModal, $stateParams, $http, $game, usSpinnerService, $bidding) {
     'use strict'
 
 
@@ -14,7 +14,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     $scope.message = false;
     $scope.isBulldozerOwner = true;
     $scope.bidBy = "";
-    $scope.team1 ="team1";
+    $scope.team1 = "team1";
     $scope.team2 = "team2";
     // $scope.counter = 30;
     // var stopped;
@@ -39,24 +39,24 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     $scope.stopSpin = function () {
         usSpinnerService.stop('spinner-1');
     }
-    $scope.getColor = function (budgetLeft,team) {
+    $scope.getColor = function (budgetLeft, team) {
         document.getElementsByClassName(team)[0].style.width = budgetLeft + "%";
         if (budgetLeft <= 25 || budgetLeft <= 25) {
             return "redColor";
-        } 
+        }
         if (budgetLeft > 25 && budgetLeft <= 50) {
             return "orangeColor";
         }
         if (budgetLeft > 50 && budgetLeft <= 75) {
             return "cyanColor";
-        }  
+        }
         if (budgetLeft > 75 && budgetLeft <= 100) {
             return "greenColor";
         }
     }
     $scope.$on('$viewContentLoaded', function () {
         $scope.getSeasons();
-        
+
     });
 
     $scope.insertCurrentlyBiddingPlayer = function (data) {
@@ -65,7 +65,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             "playerId": data[0].id,
             "bidStatus": "BIDDING"
         }
-        $bidding.insertCurrentBiddingPlayer(payload).then(function (response){
+        $bidding.insertCurrentBiddingPlayer(payload).then(function (response) {
             $scope.startSpin();
             if (response.statusCode) {
                 $scope.stopSpin();
@@ -81,10 +81,10 @@ angular.module('badminton').controller('auctionPageController', function ($scope
 
         })
     }
-    
+
 
     $scope.bidBySmashDroppers = function () {
-        
+
         $scope.slabValue = $scope.getBidSlabValue($scope.bidPrice);
         $scope.bidPrice = $scope.bidPrice + $scope.slabValue;
         if ($scope.bidPrice != 10100000) {
@@ -94,18 +94,18 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             $scope.message = true;
             $scope.bidPrice = 100000;
         }
-        $scope.bidBy =  $scope.teams[1].teamId;
+        $scope.bidBy = $scope.teams[1].teamId;
         // $scope.countdown();
         var payload = {
-                "seasonId": $scope.seasons.seasonId,
-                "teamId":$scope.teams[1].teamId,
-                "playerId": $scope.currentPlayerBidding.id,
-                "bidType": "BID",
-                "bidValue": $scope.bidPrice
+            "seasonId": $scope.seasons.seasonId,
+            "teamId": $scope.teams[1].teamId,
+            "playerId": $scope.currentPlayerBidding.id,
+            "bidType": "BID",
+            "bidValue": $scope.bidPrice
 
-            }
+        }
         $bidding.bidByTeam(payload).then(function (response) {
-            
+
             $scope.startSpin();
             if (response.statusCode) {
                 $scope.stopSpin();
@@ -122,17 +122,17 @@ angular.module('badminton').controller('auctionPageController', function ($scope
         })
 
     }
-    $scope.wonBid = function (){
+    $scope.wonBid = function () {
         var payload = {
-                "seasonId": $scope.seasons.seasonId,
-                "teamId":$scope.bidBy,
-                "playerId": $scope.currentPlayerBidding.id,
-                "bidType": "WINNING-BID",
-                "bidValue": $scope.bidPrice
+            "seasonId": $scope.seasons.seasonId,
+            "teamId": $scope.bidBy,
+            "playerId": $scope.currentPlayerBidding.id,
+            "bidType": "WINNING-BID",
+            "bidValue": $scope.bidPrice
 
         }
         $bidding.wonByTeam(payload).then(function (response) {
-            
+
             $scope.startSpin();
             if (response) {
                 alert("bid won");
@@ -141,7 +141,7 @@ angular.module('badminton').controller('auctionPageController', function ($scope
                 $scope.refresh();
                 $scope.getSeasons();
                 $scope.bidPrice = 0;
-                $scope.bidBy ="";
+                $scope.bidBy = "";
                 $scope.slabValue = 100000;
 
             }
@@ -170,18 +170,18 @@ angular.module('badminton').controller('auctionPageController', function ($scope
             $scope.bidPrice = 100000;
 
         }
-        
-        $scope.bidBy =  $scope.teams[0].teamId;
+
+        $scope.bidBy = $scope.teams[0].teamId;
         var payload = {
-                "seasonId": $scope.seasons.seasonId,
-                "teamId":$scope.teams[0].teamId,
-                "playerId": $scope.currentPlayerBidding.id,
-                "bidType": "BID",
-                "bidValue": $scope.bidPrice
+            "seasonId": $scope.seasons.seasonId,
+            "teamId": $scope.teams[0].teamId,
+            "playerId": $scope.currentPlayerBidding.id,
+            "bidType": "BID",
+            "bidValue": $scope.bidPrice
 
         }
         $bidding.bidByTeam(payload).then(function (response) {
-            
+
             $scope.startSpin();
             if (response.statusCode) {
                 $scope.refresh();
@@ -223,9 +223,9 @@ angular.module('badminton').controller('auctionPageController', function ($scope
                 if ($scope.auctionFeed) {
                     for (var i = 0; i < $scope.auctionFeed.length; i++) {
                         var feed = $scope.auctionFeed[i];
-                        if(feed.profilePic == null) {
+                        if (feed.profilePic == null) {
                             feed.profilePic = "img/1.png";
-                        } 
+                        }
                         $scope.auctionFeed[i] = feed;
                     }
                 }
@@ -241,58 +241,57 @@ angular.module('badminton').controller('auctionPageController', function ($scope
 
         })
 
-        
+
 
     }
-    
-    $scope.getSeasons = function() {
+
+    $scope.getSeasons = function () {
         // $scope.getColor();
         $game.getSeasonsTeamsPlayers().then(function (response) {
             $scope.startSpin();
             if (response.statusCode) {
-               
+
                 $scope.seasons = response.body;
                 $scope.teams = $scope.seasons.teams;
                 if ($scope.teams) {
                     $scope.progressValue1 = ($scope.teams[0].remainingBudget / $scope.seasons.totalBudget) * 100;
-                    
+
                     $scope.progressValue2 = ($scope.teams[1].remainingBudget / $scope.seasons.totalBudget) * 100;
-                    
+
                     for (var i = 0; i < $scope.teams.length; i++) {
                         var teams = $scope.teams[i];
                         for (var j = 0; j < teams.players.length; j++) {
                             var player = teams.players[j];
-                            if(player.profilePic == null) {
+                            if (player.profilePic == null) {
                                 player.profilePic = "img/1.png";
-                            } 
+                            }
                             teams.players[j] = player;
                         }
                         $scope.teams[i] = teams;
                     }
                 }
-                
+
                 $scope.remainingPlayers = $scope.seasons.remainingPlayers;
-                if ($scope.remainingPlayers.length >0 || $scope.currentPlayerBidding != undefined) {
-                    
+                if ($scope.remainingPlayers.length > 0 || $scope.currentPlayerBidding != undefined) {
+
                     for (var i = 0; i < $scope.remainingPlayers.length; i++) {
                         var remainingPlayer = $scope.remainingPlayers[i];
-                        if(remainingPlayer.profile_picture == null) {
+                        if (remainingPlayer.profile_picture == null) {
                             remainingPlayer.profile_picture = "img/1.png";
-                        } 
-                        if(remainingPlayer.played == null && remainingPlayer.won == null && remainingPlayer.lost == null)  {
+                        }
+                        if (remainingPlayer.played == null && remainingPlayer.won == null && remainingPlayer.lost == null) {
                             remainingPlayer.played = "-";
                             remainingPlayer.won = "-";
                             remainingPlayer.lost = "-";
-                        } 
+                        }
                         $scope.remainingPlayers[i] = remainingPlayer;
                     }
                     $bidding.getCurrentPlayerForBidding().then(function (response) {
                         if (response.statusCode) {
-                            if(response.body != undefined) {
+                            if (response.body != undefined) {
                                 $scope.currentPlayerBidding = response.body;
                             }
-                            else
-                            {
+                            else {
                                 $scope.insertCurrentlyBiddingPlayer($scope.remainingPlayers);
                             }
                         }
@@ -313,37 +312,37 @@ angular.module('badminton').controller('auctionPageController', function ($scope
     }
 
     $scope.isEmpty = function (currentPlayer) {
-        if(currentPlayer == undefined) {
+        if (currentPlayer == undefined) {
             return true;
         } else {
             return false;
         }
     }
 
-    $scope.gotoHome = function(){
+    $scope.gotoHome = function () {
         $state.go("homePage");
     }
-    $scope.gotoPlayers = function(){
+    $scope.gotoPlayers = function () {
         $state.go("playersPage");
     }
-    $scope.gotoAuction = function(){
+    $scope.gotoAuction = function () {
         $state.go("auctionPage");
     }
-    $scope.gotoFixtures = function(){
+    $scope.gotoFixtures = function () {
         $state.go("fixturesPage");
     }
-    $scope.gotoTeams = function(){
+    $scope.gotoTeams = function () {
         $state.go("teamsPage");
     }
-    $scope.gotoMatch = function(){
+    $scope.gotoMatch = function () {
         $state.go("matchPage")
     }
 
-    $scope.openNav = function(){
+    $scope.openNav = function () {
         document.getElementById("mySidenav").style.width = "100%";
     }
-    $scope.closeNav = function(){
+    $scope.closeNav = function () {
         document.getElementById("mySidenav").style.width = "0";
     }
-    
+
 })
