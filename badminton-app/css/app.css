@@ -67,9 +67,9 @@
         display: block;
     }
     .player-mobile-image{
-        width: 200px;
-        height: 200px;
-        border: 2px solid black;
+        width: 125px;
+        height: 125px;
+        border-radius: 50%;
     }
 }
 
@@ -96,8 +96,8 @@
     }
 
     .player-profile-pic {
-        width: 200px;
-        height: 200px;
+        width: 125px;
+        height: 125px;
         border-radius: 50%;
     }
 
