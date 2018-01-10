@@ -1,9 +1,9 @@
 angular.module('badminton').directive('header', function () {
     'use strict'
     return {
-        scope:true,
+        scope: true,
         templateUrl: 'directive/header-view.html'
     };
-    
-    
+
+
 })

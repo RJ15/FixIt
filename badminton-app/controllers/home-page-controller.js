@@ -45,9 +45,11 @@ angular.module('badminton').controller('homePageController', function ($scope, $
     }
     $scope.openNav = function () {
         document.getElementById("mySidenav").style.width = "100%";
+        document.getElementById("hamburger").style.display = "none";
     }
     $scope.closeNav = function () {
         document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("hamburger").style.display = "block";
     }
 
 })
