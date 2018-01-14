@@ -1,8 +1,8 @@
 {
-  "name": "angular-seed",
+  "name": "badminton",
   "private": true,
   "version": "0.0.0",
-  "description": "A starter project for AngularJS",
+  "description": "App to manage badminton fixtures",
   "repository": "https://github.com/angular/angular-seed",
   "license": "MIT",
   "devDependencies": {
