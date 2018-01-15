@@ -162,6 +162,14 @@
     .display-mobile{
         display: none;
     }
+    .desktop-header{
+        position: fixed;
+        top: 0;
+        overflow: hidden;
+        z-index: 100;
+        background-color: black;
+        width: 75%;
+    }
 }
 
 
