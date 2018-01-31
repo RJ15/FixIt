@@ -45,9 +45,14 @@ badmintonApp.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'matchPageController'
 
         })
+        .state('landingPage',{
+            url: '/landing-page',
+            templateUrl: 'views/landing-page1.html',
+            controller: 'homePageController'
+        })
         
         
-    $urlRouterProvider.otherwise('/login-page');
+    $urlRouterProvider.otherwise('/landing-page');
 })
 
 
